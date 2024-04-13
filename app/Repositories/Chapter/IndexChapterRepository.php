@@ -10,19 +10,30 @@ class IndexChapterRepository extends BaseRepository
 {
     public function execute(){
         $allChapters = Chapter::all();
+        $chaptersByLanguage = [];
 
-        $chapters = [];
+        foreach ($allChapters as $chapter) {
+            $language = $chapter->programmingLanguage->name;
 
-        foreach($allChapters as $chapter){
-            $chapters[] = [
-                'programmingLanguage' => $chapter->programmingLanguage->name,
+            if (!isset($chaptersByLanguage[$language])) {
+                $chaptersByLanguage[$language] = [];
+            }
+
+            $chaptersByLanguage[$language][] = [
                 'reference_number' => $chapter->reference_number,
                 'chapter_number' => $chapter->chapter_number,
                 'chapter_name' => $chapter->chapter_name
             ];
         }
 
-        return $this->success("List of All Chapters", $chapters);
+        $formattedChapters = [];
+        foreach ($chaptersByLanguage as $language => $chapters) {
+            $formattedChapters[] = [
+                'programming_language' => $language,
+                'chapters' => $chapters
+            ];
+        }
 
+        return $this->success("List of All Chapters", $formattedChapters);
     }
 }
