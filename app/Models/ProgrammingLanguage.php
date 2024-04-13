@@ -23,6 +23,6 @@ class ProgrammingLanguage extends Model
     ];
 
     protected function chapters(){
-        return $this->hasMany(Chapter::class, 'programming_language_id');
+        return $this->hasMany(Chapter::class);
     }
 }
