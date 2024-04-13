@@ -11,12 +11,24 @@ class Exam extends Model
 
     protected $fillable = [
         'reference_number',
-        'title'
-    ]; 
+        'chapter_id',
+        'question_number',
+        'question',
+        'choice_1',
+        'choice_2',
+        'choice_3',
+        'choice_4',
+        'correct_answer',
+    ];
 
-        protected $hidden = [
-            'id',
-            'created_at',
-            'updated_at'
-        ];
+    protected $hidden = [
+        'id',
+        'created_at',
+        'updated_at'
+    ];
+
+    public function chapter()
+    {
+        return $this->belongsTo(Chapter::class);
+    }
 }

@@ -56,6 +56,11 @@ class ExamController extends Controller
         return $this->show->execute($referenceNumber);
     }
 
+    protected function viewQuestion(ShowExamRequest $request, $referenceNumber)
+    {
+        return $this->show->viewQuestion($referenceNumber);
+    }
+
     protected function update(UpdateExamRequest $request, $referenceNumber)
     {
         return $this->update->execute($request, $referenceNumber);

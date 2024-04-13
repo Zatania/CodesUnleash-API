@@ -10,17 +10,36 @@ class IndexExamRepository extends BaseRepository
 {
     public function execute(){
         $allExams = Exam::all();
+        $examsByChapters = [];
 
-        $exams = [];
+        foreach ($allExams as $exam) {
+            $chapter = $exam->chapter->chapter_number . ' ' . $exam->chapter->chapter_name;
 
-        foreach($allExams as $exam){
-            $exams[] = [
-                'referenceNumber' => $exam->reference_number,
-                'title' => $exam->title
+            if (!isset($examsByChapters[$chapter])) {
+                $examsByChapters[$chapter] = [];
+            }
+
+            $examsByChapters[$chapter][] = [
+                'reference_number' => $exam->reference_number,
+                'question_number' => $exam->question_number,
+                'question' => $exam->question,
+                'choice_1' => $exam->choice_1,
+                'choice_2' => $exam->choice_2,
+                'choice_3' => $exam->choice_3,
+                'choice_4' => $exam->choice_4,
+                'correct_answer' => $exam->correct_answer
             ];
         }
 
-        return $this->success("List of All Exams", $exams);
+        $formattedExams = [];
 
+        foreach ($examsByChapters as $chapter => $exams) {
+            $formattedExams[] = [
+                'chapter' => $chapter,
+                'exams' => $exams
+            ];
+        }
+
+        return $this->success("List of All Exams", $formattedExams);
     }
 }

@@ -12,16 +12,22 @@ class CreateExamRepository extends BaseRepository
     {if ($this->user()->hasRole('ADMIN')) {
             $exam = Exam::create([
                 'reference_number' => $this->examReferenceNumber(),
-                'title' => $request->title
+                'chapter_id' => $this->getChapterId($request->chapter_reference_number),
+                'question_number' => $request->question_number,
+                'question' => $request->question,
+                'choice_1' => $request->choice_1,
+                'choice_2' => $request->choice_2,
+                'choice_3' => $request->choice_3,
+                'choice_4' => $request->choice_4,
+                'correct_answer' => $request->correct_answer,
             ]);
-        }
-        else{
-            return $this->error("You are not authorized to create Exam");
-        }
             
-            return $this->success("Exam successfully created", [
-                'reference_number' => $exam->reference_number(),
-                'title' => $exam->title
+            return $this->success("Exam successfully created.", [
+                'exam' => $exam,
             ]);
+        }
+        else {
+            return $this->error("You are not authorized to create a exam.");
+        }
     }
 }
