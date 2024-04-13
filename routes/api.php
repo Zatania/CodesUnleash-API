@@ -8,9 +8,8 @@ use App\Http\Controllers\{
     ProgrammingLanguageController,
     ChapterController,
     LessonController,
-    QuizController,
-    ExamController,
-    GoogleDriveController
+    ChapterAssessmentController,
+    ExamController
 };
 
 /*
@@ -83,16 +82,16 @@ Route::group([
     $route->post('/upload-video', [LessonController::class, 'uploadVideo']);
 });
 
-//quiz
+//chapter assessment
 Route::group([
     'middleware' => 'auth:sanctum',
-    'prefix' => 'quiz'
+    'prefix' => 'chapter_assessment'
 ], function ($route) {
-    $route->get('/', [QuizController::class, 'index']);
-    $route->post('/create', [QuizController::class, 'create']);
-    $route->get('/{referenceNumber}', [QuizController::class, 'show']);
-    $route->put('/update/{referenceNumber}', [QuizController::class, 'update']);
-    $route->delete('/delete/{referenceNumber}', [QuizController::class, 'delete']);
+    $route->get('/', [ChapterAssessmentController::class, 'index']);
+    $route->post('/create', [ChapterAssessmentController::class, 'create']);
+    $route->get('/view/{referenceNumber}', [ChapterAssessmentController::class, 'show']);
+    $route->put('/update/{referenceNumber}', [ChapterAssessmentController::class, 'update']);
+    $route->delete('/delete/{referenceNumber}', [ChapterAssessmentController::class, 'delete']);
 });
 
 //exam
