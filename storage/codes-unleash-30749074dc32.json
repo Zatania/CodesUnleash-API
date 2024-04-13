@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "codes-unleash",
+  "private_key_id": "30749074dc328589f0259a779f7e9bc7bbf6d668",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC3eHOJ6XtNup4L\ndexiciNZxe+RTluwHZSLB9DWiwGueax/U3O8iJwcVzLj3tIEJ7juOkQFmqmvFZP/\nRH0oCxtUUE7rh9PsFulVpcHXgaXvB/yJRiT5MFDxWvpXqwQ0PYDqiK2fYbyMbgyC\nv6qjuVbJJa1KCgEPBr4TeGHwS0Q1wzUSnncD+1WsAV0WPhJaj1UhuPgNyuzoz2ma\nsCBvoo4OeL96ckZCHIHIiZK9EhXUXdJAF4PlvNi9y4pxdNaTs7jCnVCiqUoxHB5U\nGxsnOORQNEVrhG49EZjHgYOp6irgaA4gpVRbosWfNTXUJ9TR8z0+kTxsS98cjxhF\nnZQEE05VAgMBAAECggEATXda1W7ThMjYhX9HjXOi8HtOQXyj4xNCTofAym2MCrbO\nOj6qvf6yZ5b74lIJO/7nqxLH+NPKdKY4RI6PB9LUub9k6zcBKIyt/d9MnulbfjdR\njkajQuH/M0FWNaD8V/BmF+EY6hRy75phxu0VqCaP+cNiTUI3GzieFgt80uB8zvPB\n7MmpUrozYjMTaQi9nCV7TsI5EMgowEd5C6no11gzOQ9Ipsv7ieNzfdq1e4cfLrlz\nYxUBabK9nJm52FySCKC2omGq5atA3Z0F+FgabOQ7F6gpeJOxjUvJ0GHFdd8D+2YQ\nFM2du/Nds0q33xJPAZfCqw6z8HNyuytPUgt4WPY/mwKBgQD6ctceKHurpwHn9Zn8\nx/9DYINqsv+fIMGQccMDxytgixGZJ6YCMf4vokDsz+wa7nVsknxg1o1QKDg088rT\nmVlRYD3X9oFC6lzoNuyRbrgc/S5HJlz6hnVtWEz1tRBGz8kLX83lUqWaNsIq7FKM\nIOZ+HYRzXHocWHSk8/TcQO01JwKBgQC7iYv62IPP9w1BRbzW9JqE7FIGZAB4pyr9\n5oizrhz2USr0GynU1anhGpofQGjy8EzuWnSYfqGWJMeFhffP7UmyscLQniX6mmm2\nvfOtl9IvuQSHxEyUz27Zxn788uF81YJJDR9BsFPHnJrZj4NVmSRHnKxD/18Wi6tf\nqT5z4XzmIwKBgCH8BV7NRYLUZbjRJfUcOnItHYgUBAXWzw1HspvHogY2uMucirVP\njVtvW/oGeNZqtzplYkVNt91Bp+bfkg1GiM03Dw1IIOAwpyzHjzBo4sjkPixfc0x3\nhGWzDrZkvHGvbmuBs5HDtj8H4S8r5EOpjz1bygZRbSx9gE6F4BsnIEkPAoGBAIJD\nblnVHunLfweBu0PML7B4vhj2SWWFKFWoVfgIztFBXAam/414xEE5yyg+AygMRkOh\nzS9HdlHmRji274UcG37l/p4N2++QZjGrC6HevP6tEzqC3XbYBvV57SciRgICBDdd\nyAJGykryupS4HM/OSeb8KqQotBHi/iy6UEkJrUnlAoGBALWu5lSc9AfaST3PFsEa\njGbgY9UUaYhChLHmetGsNQS0NbQQSZUGXCYh19AgmJPTxd6tlEU62fxZ42kY7XqZ\n23veaaiZIvsiy1kN0vWnxifp8qh08I1Hmb2A5mRHwwwbS8Qt1h4bsfVyI/ebmmDQ\nzdS0OGG4I9kOt+xEmVcYOqGb\n-----END PRIVATE KEY-----\n",
+  "client_email": "codes-unleash@codes-unleash.iam.gserviceaccount.com",
+  "client_id": "116680155653295619884",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/codes-unleash%40codes-unleash.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

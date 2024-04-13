@@ -1,0 +1,35 @@
+{
+	"info": {
+		"_postman_id": "06d4291b-d886-4202-8620-a6a3fa8768b2",
+		"name": "Chapter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24217473",
+		"_collection_link": "https://gold-water-818736.postman.co/workspace/Codes-Unleash~d8a349cc-4dc9-4668-8fa5-4d7b938b9508/collection/24217473-06d4291b-d886-4202-8620-a6a3fa8768b2?action=share&source=collection_link&creator=24217473"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Chapter 2\",\r\n    \"programmingLanguage\": \"d300bcd13920\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{base_url}}/chapter/create"
+			},
+			"response": []
+		}
+	]
+}

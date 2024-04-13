@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "02ed2467-b2fa-44bf-b141-27344b3fb7a4",
+		"name": "Lesson",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24217473",
+		"_collection_link": "https://gold-water-818736.postman.co/workspace/Codes-Unleash~d8a349cc-4dc9-4668-8fa5-4d7b938b9508/collection/24217473-02ed2467-b2fa-44bf-b141-27344b3fb7a4?action=share&source=collection_link&creator=24217473"
+	},
+	"item": [
+		{
+			"name": "Create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "{{token}}"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "lessonNumber",
+							"value": "1.1",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Kotlin Syntax",
+							"type": "text"
+						},
+						{
+							"key": "video",
+							"value": "videosample.mp4",
+							"type": "text"
+						},
+						{
+							"key": "exampleCode",
+							"value": "fun main() {\n  println(\"Hello World!\")\n}",
+							"type": "text"
+						},
+						{
+							"key": "output",
+							"value": "Hello World!",
+							"type": "text"
+						},
+						{
+							"key": "explanation",
+							"value": "In Kotlin, 'fun main()' represents the program's entry point, where execution begins. 'println(\"Hello World\")' is a statement within the 'main' function that prints the text \"Hello World\" to the console. In this scenario, the 'println' function is used to show text, and it outputs the supplied string to the console, making it visible to the user running the application.",
+							"type": "text"
+						},
+						{
+							"key": "chapter",
+							"value": "00122dcde04e",
+							"type": "text"
+						}
+					]
+				},
+				"url": "{{base_url}}/lesson/create"
+			},
+			"response": []
+		}
+	]
+}
