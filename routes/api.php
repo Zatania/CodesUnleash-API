@@ -80,6 +80,7 @@ Route::group([
     $route->get('/view/{referenceNumber}', [LessonController::class, 'show']);
     $route->put('/update/{referenceNumber}', [LessonController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [LessonController::class, 'delete']);
+    $route->post('/upload-video', [LessonController::class, 'uploadVideo']);
 });
 
 //quiz

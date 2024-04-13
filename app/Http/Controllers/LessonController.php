@@ -65,4 +65,15 @@ class LessonController extends Controller
     {
         return $this->delete->execute($referenceNumber);
     }
+
+    protected function uploadVideo(Request $request)
+    {
+        $request->validate([
+            'video' => 'required|mimetypes:video/mp4|max:50000', // Adjust max file size as needed
+        ]);
+
+        $videoPath = $request->file('video')->store('videos', 'public');
+
+        return $videoPath;
+    }
 }
