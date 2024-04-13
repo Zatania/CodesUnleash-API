@@ -56,6 +56,11 @@ class ChapterAssessmentController extends Controller
         return $this->show->execute($referenceNumber);
     }
 
+    protected function viewQuestion(ShowChapterAssessmentRequest $request, $referenceNumber)
+    {
+        return $this->show->viewQuestion($referenceNumber);
+    }
+
     protected function update(UpdateChapterAssessmentRequest $request, $referenceNumber)
     {
         return $this->update->execute($request, $referenceNumber);

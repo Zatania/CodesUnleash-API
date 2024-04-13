@@ -90,6 +90,7 @@ Route::group([
     $route->get('/', [ChapterAssessmentController::class, 'index']);
     $route->post('/create', [ChapterAssessmentController::class, 'create']);
     $route->get('/view/{referenceNumber}', [ChapterAssessmentController::class, 'show']);
+    $route->get('/view/question/{referenceNumber}', [ChapterAssessmentController::class, 'viewQuestion']);
     $route->put('/update/{referenceNumber}', [ChapterAssessmentController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [ChapterAssessmentController::class, 'delete']);
 });
@@ -101,7 +102,8 @@ Route::group([
 ], function ($route) {
     $route->get('/', [ExamController::class, 'index']);
     $route->post('/create', [ExamController::class, 'create']);
-    $route->get('/{referenceNumber}', [ExamController::class, 'show']);
+    $route->get('/view/{referenceNumber}', [ExamController::class, 'show']);
+    $route->get('/view/question/{referenceNumber}', [ExamController::class, 'viewQuestion']);
     $route->put('/update/{referenceNumber}', [ExamController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [ExamController::class, 'delete']);
 });
