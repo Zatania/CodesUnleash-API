@@ -14,8 +14,9 @@ class CreateChapterAssessmentRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'chapter_id' => ['required', 'exists:chapters,id'],
-            'questions' => ['required', 'string'],
+            'chapter_reference_number' => ['required', 'exists:chapters,reference_number'],
+            'question_number' => ['required', 'numeric'],
+            'question' => ['required', 'string'],
             'choice_1' => ['required', 'string'],
             'choice_2' => ['required', 'string'],
             'choice_3' => ['required', 'string'],

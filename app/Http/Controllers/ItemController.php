@@ -7,7 +7,7 @@ use App\Models\User; // Import User model
 use App\Models\ProgrammingLanguage; // Import ProgrammingLanguage model
 use App\Models\Chapter; // Import Chapter model
 use App\Models\Lesson; // Import Lesson model
-use App\Models\Quiz; // Import Quiz model
+use App\Models\ChapterAssessment; // Import ChapterAssessment model
 use App\Models\Exam; // Import Exam model
 
 class ItemController extends Controller

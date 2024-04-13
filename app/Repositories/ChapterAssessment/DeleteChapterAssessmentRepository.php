@@ -3,6 +3,7 @@
 namespace App\Repositories\ChapterAssessment;
 
 use App\Repositories\BaseRepository;
+
 use App\Models\ChapterAssessment;
 
 class DeleteChapterAssessmentRepository extends BaseRepository

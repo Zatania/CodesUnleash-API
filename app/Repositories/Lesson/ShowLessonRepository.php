@@ -12,7 +12,6 @@ class ShowLessonRepository extends BaseRepository
     public function execute($referenceNumber){
 
         $lesson = Lesson::where('reference_number', $referenceNumber)->firstOrFail();
-        $videoUrl = Storage::url("{$lesson->folder}/{$lesson->video}");
 
         return $this->success("Lesson Found", [
             'programming_language' => $lesson->chapter->programmingLanguage->name,

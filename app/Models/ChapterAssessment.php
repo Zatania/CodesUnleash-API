@@ -11,8 +11,10 @@ class ChapterAssessment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'reference_number',
         'chapter_id',
-        'questions',
+        'question_number',
+        'question',
         'choice_1',
         'choice_2',
         'choice_3',

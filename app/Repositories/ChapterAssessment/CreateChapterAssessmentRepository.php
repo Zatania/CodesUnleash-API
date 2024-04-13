@@ -7,13 +7,14 @@ use App\Repositories\BaseRepository;
 
 class CreateChapterAssessmentRepository extends BaseRepository
 {
-    public function createChapterAssessment($request)
+    public function execute($request)
     {
         if ($this->user()->hasRole('ADMIN')) {
             $chapterAssessment = ChapterAssessment::create([
                 'reference_number' => $this->chapterAssessmentReferenceNumber(),
-                'chapter_id' => $request->chapter_id,
-                'questions' => $request->questions,
+                'chapter_id' => $this->getChapterId($request->chapter_reference_number),
+                'question_number' => $request->question_number,
+                'question' => $request->question,
                 'choice_1' => $request->choice_1,
                 'choice_2' => $request->choice_2,
                 'choice_3' => $request->choice_3,

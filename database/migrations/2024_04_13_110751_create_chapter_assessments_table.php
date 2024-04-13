@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('chapter_assessments', function (Blueprint $table) {
             $table->id();
+            $table->string('reference_number');
             $table->foreignId('chapter_id')->constrained()->onDelete('cascade');
-            $table->text('questions');
+            $table->integer('question_number');
+            $table->text('question');
             $table->text('choice_1');
             $table->text('choice_2');
             $table->text('choice_3');

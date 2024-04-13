@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Repositories\Quiz;
+namespace App\Repositories\ChapterAssessment;
 
 use App\Repositories\BaseRepository;
 
-use App\Models\Quiz;
+use App\Models\ChapterAssessment;
 
-class ShowQuizRepository extends BaseRepository
+class ShowChapterAssessmentRepository extends BaseRepository
 {
     public function execute($referenceNumber){
-        $quiz = Quiz::where('reference_number', $referenceNumber)->firstOrFail();
-        
-        return $this->success("Quiz Found", [
-            'referenceNumber' => $quiz->reference_number,
-            'title' => $quiz->title
-        ]);    
-    
+        $chapterAssessment = ChapterAssessment::where('reference_number', $referenceNumber)->first();
+
+        if (!$chapterAssessment) {
+            return $this->error("Chapter Assessment not found", null, 404);
+        }
+
+        return $this->success("Chapter Assessment Found", $chapterAssessment);
     }
 }

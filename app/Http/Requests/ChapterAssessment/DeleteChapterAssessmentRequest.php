@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Quiz;
+namespace App\Http\Requests\ChapterAssessment;
 
 use App\Http\Requests\ResponseRequest;
 
-class DeleteQuizRequest extends ResponseRequest
+class DeleteChapterAssessmentRequest extends ResponseRequest
 {
      /**
      * Determine if the user is authorized to make this request.

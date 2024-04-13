@@ -4,7 +4,7 @@ namespace App\Http\Requests\ChapterAssessment;
 
 use App\Http\Requests\ResponseRequest;
 
-class ShowChapterAssessmentRequest extends ResponseRequest
+class UpdateChapterAssessmentRequest extends ResponseRequest
 {
      /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,12 @@ class ShowChapterAssessmentRequest extends ResponseRequest
     public function rules()
     {
         return [
-            //
+            'question' => ['required', 'string'],
+            'choice_1' => ['required', 'string'],
+            'choice_2' => ['required', 'string'],
+            'choice_3' => ['required', 'string'],
+            'choice_4' => ['required', 'string'],
+            'correct_answer' => ['required', 'numeric', 'between:1,4']
         ];
     }
 }

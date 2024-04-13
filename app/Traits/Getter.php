@@ -7,7 +7,7 @@ use App\Models\{
     ProgrammingLanguage,
     Chapter,
     Lesson,
-    Quiz,
+    ChapterAssessment,
     Exam
 };
 
@@ -37,10 +37,10 @@ trait Getter
         return $lesson->id;
     }
 
-    protected function getQuizId($referenceNumber){
-        $quiz = Quiz::where('reference_number', $referenceNumber)->first();
+    protected function getChapterAssessmentId($referenceNumber){
+        $chap_ass = ChapterAssessment::where('reference_number', $referenceNumber)->first();
 
-        return $quiz->id;
+        return $chap_ass->id;
     }
 
     protected function getExamId($referenceNumber){

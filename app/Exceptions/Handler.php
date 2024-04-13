@@ -34,6 +34,14 @@ class Handler extends ExceptionHandler
                     'results'   =>  [],
                     'code'      =>  401,
                     'errors'    =>  true,
+                    'exception' => [
+                        'sql'       => $e->getSql(),      // Get the SQL query that caused the exception
+                        'bindings'  => $e->getBindings(), // Get the bindings used in the query
+                        'message'   => $e->getMessage(),  // Get the exception message
+                        'file'      => $e->getFile(),     // Get the file where the exception occurred
+                        'line'      => $e->getLine(),     // Get the line number where the exception occurred
+                        'code'      => $e->getCode(),     // Get the exception code
+                    ],
                 ], 401);
         });
 
@@ -44,6 +52,14 @@ class Handler extends ExceptionHandler
                     'results'   =>  [],
                     'code'      =>  404,
                     'errors'    =>  true,
+                    'exception' => [
+                        'sql'       => $e->getSql(),      // Get the SQL query that caused the exception
+                        'bindings'  => $e->getBindings(), // Get the bindings used in the query
+                        'message'   => $e->getMessage(),  // Get the exception message
+                        'file'      => $e->getFile(),     // Get the file where the exception occurred
+                        'line'      => $e->getLine(),     // Get the line number where the exception occurred
+                        'code'      => $e->getCode(),     // Get the exception code
+                    ],
                 ], 404);
         });
 
@@ -54,7 +70,32 @@ class Handler extends ExceptionHandler
                     'results'   =>  [],
                     'code'      =>  404,
                     'errors'    =>  true,
+                    'exception' => [
+                        'sql'       => $e->getSql(),      // Get the SQL query that caused the exception
+                        'bindings'  => $e->getBindings(), // Get the bindings used in the query
+                        'message'   => $e->getMessage(),  // Get the exception message
+                        'file'      => $e->getFile(),     // Get the file where the exception occurred
+                        'line'      => $e->getLine(),     // Get the line number where the exception occurred
+                        'code'      => $e->getCode(),     // Get the exception code
+                    ],
                 ], 404);
+        });        
+
+        $this->renderable(function (ModelNotFoundException $e) {
+            return response()->json([
+                'message'   =>  "Requested resource not found.",
+                'results'   =>  [],
+                'code'      =>  404,
+                'errors'    =>  true,
+                'exception' => [
+                    'sql'       => $e->getSql(),      // Get the SQL query that caused the exception
+                    'bindings'  => $e->getBindings(), // Get the bindings used in the query
+                    'message'   => $e->getMessage(),  // Get the exception message
+                    'file'      => $e->getFile(),     // Get the file where the exception occurred
+                    'line'      => $e->getLine(),     // Get the line number where the exception occurred
+                    'code'      => $e->getCode(),     // Get the exception code
+                ],
+            ], 404);
         });
 
         // $this->renderable(function (Exception $e) {
