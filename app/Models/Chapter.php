@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ProgrammingLanguage;
 use App\Models\Lesson;
+use App\Models\ChapterAssessment;
+use App\Models\Exam;
 
 class Chapter extends Model
 {

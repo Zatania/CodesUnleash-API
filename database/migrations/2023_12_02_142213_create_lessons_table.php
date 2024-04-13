@@ -14,16 +14,14 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('reference_number');
-            $table->unsignedBigInteger('chapter_id');
-            $table->foreign('chapter_id')->references('id')->on('chapters')->onDelete('cascade');
+            $table->foreignId('chapter_id')->constrained()->onDelete('cascade');
             $table->string('lesson_number');
-            $table->string('title');
-            $table->longText('description');
-            $table->string('folder')->unique();
-            $table->string('video')->nullable();
-            $table->longText('example_code');
-            $table->longText('output');
-            $table->longText('explanation');
+            $table->string('lesson_title');
+            $table->text('lesson_description');
+            $table->string('lesson_video');
+            $table->text('lesson_example_code');
+            $table->text('lesson_output');
+            $table->text('lesson_explanation');
             $table->timestamps();
         });
     }

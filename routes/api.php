@@ -77,7 +77,7 @@ Route::group([
 ], function ($route) {
     $route->get('/', [LessonController::class, 'index']);
     $route->post('/create', [LessonController::class, 'create']);
-    $route->get('/{referenceNumber}', [LessonController::class, 'show']);
+    $route->get('/view/{referenceNumber}', [LessonController::class, 'show']);
     $route->put('/update/{referenceNumber}', [LessonController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [LessonController::class, 'delete']);
 });

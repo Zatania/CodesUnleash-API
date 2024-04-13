@@ -5,40 +5,32 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\{
-    Chapter,
-    LessonImage
+    Chapter
 };
 
 class Lesson extends Model
 {
-
     use HasFactory;
 
     protected $fillable = [
         'reference_number',
-        'lesson_number',
-        'title',
-        'description',
-        'folder',
-        'video',
-        'example_code',
-        'output',
-        'explanation',
         'chapter_id',
-        'created_at',
-        'updated_at'
+        'lesson_number',
+        'lesson_title',
+        'lesson_description',
+        'lesson_video',
+        'lesson_example_code',
+        'lesson_output',
+        'lesson_explanation'
     ];
 
     protected $hidden = [
         'id',
-        'chapter_id'
+        'created_at',
+        'updated_at'
     ];
 
     protected function chapter(){
-        return $this->belongsTo(Chapter::class, 'chapter_id');
-    }
-
-    protected function lessonImages(){
-        return $this->hasMany(LessonImage::class, 'lesson_id');
+        return $this->belongsTo(Chapter::class);
     }
 }
