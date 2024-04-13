@@ -16,8 +16,9 @@ class IndexChapterRepository extends BaseRepository
         foreach($allChapters as $chapter){
             $chapters[] = [
                 'programmingLanguage' => $chapter->programmingLanguage->name,
-                'referenceNumber' => $chapter->reference_number,
-                'title' => $chapter->title
+                'reference_number' => $chapter->reference_number,
+                'chapter_number' => $chapter->chapter_number,
+                'chapter_name' => $chapter->chapter_name
             ];
         }
 

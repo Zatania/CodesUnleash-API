@@ -14,18 +14,20 @@ class UpdateChapterRepository extends BaseRepository
 
             $chapter = Chapter::where('reference_number', $referenceNumber)->firstOrFail();
             $chapter->update([
-                'title' => $request->title
+                'chapter_number' => $request->chapter_number,
+                'chapter_name' => $request->chapter_name
             ]);
 
         }
         else{
-            return $this->error("You are not authorized to update Chapter");
+            return $this->error("You are not authorized to update a chapter.");
         }
 
         return $this->success("Chapter successfully updated",[
             'referenceNumber' => $chapter->reference_number,
-            'title' => $chapter->title,
-            'programmingLanguage' => $chapter->programmingLanguage->name
+            'programmingLanguage' => $chapter->programmingLanguage->name,
+            'chapter_number' => $chapter->chapter_number,
+            'chapter_name' => $chapter->chapter_name
         ]);
 
     }

@@ -10,15 +10,13 @@ class DeleteChapterRepository extends BaseRepository
 {
     public function execute($referenceNumber){
         if ($this->user()->hasRole('ADMIN')){
-
             $chapter = Chapter::where('reference_number', $referenceNumber)->firstOrFail();
             $chapter->delete();
-
         }
         else{
-            return $this->error("You are not authorized to delete Chapter");
+            return $this->error("You are not authorized to delete a chapter.");
         }
 
-        return $this->success("Chapter successfully deleted");
+        return $this->success("Chapter successfully deleted.");
     }
 }

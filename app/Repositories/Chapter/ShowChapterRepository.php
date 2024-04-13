@@ -25,8 +25,9 @@ class ShowChapterRepository extends BaseRepository
 
         return $this->success("Chapter Found", [
             'programmingLanguage' => $chapter->programmingLanguage->name,
-            'referenceNumber' => $chapter->reference_number,
-            'title' => $chapter->title,
+            'reference_number' => $chapter->reference_number,
+            'chapter_number' => $chapter->chapter_number,
+            'chapter_name' => $chapter->chapter_name,
             'lessons' => $lessons
         ]);
     }

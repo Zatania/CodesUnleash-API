@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
             $table->string('reference_number');
-            $table->unsignedBigInteger('programming_language_id');
-            $table->foreign('programming_language_id')->references('id')->on('programming_languages')->onDelete('cascade');
-            $table->string('title');
-            $table->string('description')->nullable();
+            $table->foreignId('programming_language_id')->constrained()->onDelete('cascade');
+            $table->integer('chapter_number');
+            $table->string('chapter_name');
             $table->timestamps();
         });
     }

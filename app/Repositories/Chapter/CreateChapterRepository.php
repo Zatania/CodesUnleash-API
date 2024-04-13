@@ -12,18 +12,20 @@ class CreateChapterRepository extends BaseRepository
         if ($this->user()->hasRole('ADMIN')){
             $chapter = Chapter::create([
                 'reference_number' => $this->chapterReferenceNumber(),
-                'title' => $request->title,
+                'chapter_number' => $request->chapter_number,
+                'chapter_name' => $request->chapter_name,
                 'programming_language_id' => $this->getProgrammingLanguageId($request->programmingLanguage)
             ]);
         }
         else{
-            return $this->error("You are not authorized to create Chapter");
+            return $this->error("You are not authorized to create a chapter.");
         }
 
         return $this->success("Chapter successfully created",[
             'programmingLanguage' => $chapter->programmingLanguage->name,
-            'referenceNumber' => $chapter->reference_number,
-            'title' => $chapter->title
+            'reference_number' => $chapter->reference_number,
+            'chapter_number' => $chapter->chapter_number,
+            'chapter_name' => $chapter->chapter_name
         ]);
     }
 }

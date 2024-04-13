@@ -24,7 +24,8 @@ class UpdateChapterRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'title' => ['string','required']
+            'chapter_number' => 'required|integer',
+            'chapter_name' => 'required|string'
         ];
     }
 }

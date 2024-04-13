@@ -13,22 +13,32 @@ class Chapter extends Model
 
     protected $fillable = [
         'reference_number',
-        'title',
+        'chapter_number',
+        'chapter_name',
         'programming_language_id'
     ];
 
     protected $hidden = [
         'id',
-        'programming_language_id',
         'created_at',
         'updated_at'
     ];
 
     protected function programmingLanguage(){
-        return $this->belongsTo(ProgrammingLanguage::class, 'programming_language_id');
+        return $this->belongsTo(ProgrammingLanguage::class);
     }
 
     protected function lessons(){
-        return $this->hasMany(Lesson::class, 'chapter_id');
+        return $this->hasMany(Lesson::class);
+    }
+
+    protected function chapterAssessment()
+    {
+        return $this->hasOne(ChapterAssessment::class);
+    }
+
+    protected function exam()
+    {
+        return $this->hasOne(Exam::class);
     }
 }
