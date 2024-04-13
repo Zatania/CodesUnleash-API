@@ -24,7 +24,7 @@ class CreateProgrammingLanguageRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'name' => ['string','required', 'unique:programming_languages,name']
+            'name' => ['string','required', 'unique:programming_languages,name'],
             'description' => ['string', 'required']
         ];
     }

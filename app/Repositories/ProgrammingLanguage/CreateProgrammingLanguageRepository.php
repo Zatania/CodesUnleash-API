@@ -25,6 +25,5 @@ class CreateProgrammingLanguageRepository extends BaseRepository
             'name' => $programmingLanguage->name,
             'description' => $programmingLanguage->description
         ]);
-
     }
 }
