@@ -4,8 +4,11 @@ namespace App\Http\Requests\Lesson;
 
 use App\Http\Requests\ResponseRequest;
 
+use App\Traits\Getter;
+
 class UpdateLessonRequest extends ResponseRequest
 {
+    use Getter;
      /**
      * Determine if the user is authorized to make this request.
      *
@@ -24,13 +27,14 @@ class UpdateLessonRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'lessonNumber' => ['required', 'string'],
-            'title' => ['required', 'string'],
-            'description' => ['required', 'string'],
-            'video' => ['required', 'string'],
-            'exampleCode' => ['required', 'string'],
-            'output' => ['required', 'string'],
-            'explanation' => ['required', 'string']
+            'chapter_reference_number' => ['required', 'string'],
+            'lesson_number' => ['required', 'string', 'unique:lessons,lesson_number,NULL,id,chapter_id,' . $this->getChapterId($this->chapter_reference_number)],
+            'lesson_title' => ['required', 'string'],
+            'lesson_description' => ['required', 'string'],
+            'lesson_video' => ['required', 'string'],
+            'lesson_example_code' => ['required', 'string'],
+            'lesson_output' => ['required', 'string'],
+            'lesson_explanation' => ['required', 'string']
         ];
     }
 }

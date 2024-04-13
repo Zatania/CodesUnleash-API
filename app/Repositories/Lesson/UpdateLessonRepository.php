@@ -13,32 +13,32 @@ class UpdateLessonRepository extends BaseRepository
 
             $lesson = Lesson::where('reference_number', $referenceNumber)->firstOrFail();
             $lesson->update([
-                'lesson_number' => $request->lessonNumber,
-                'title' => $request->title,
-                'description' => $request->description,
-                'video' => $request->video,
-                'example_code' => $request->exampleCode,
-                'output' => $request->output,
-                'explanation' => $request->explanation
-                //'chapter_id' => $request-> chapter_id
+                'chapter_id' => $this->getChapterId($request->chapter_reference_number),
+                'lesson_number' => $request->lesson_number,
+                'lesson_title' => $request->lesson_title,
+                'lesson_description' => $request->lesson_description,
+                'lesson_video' => $request->lesson_video,
+                'lesson_example_code' => $request->lesson_example_code,
+                'lesson_output' => $request->lesson_output,
+                'lesson_explanation' => $request->lesson_explanation
             ]);
 
         }
         else{
-            return $this->error("You are not authorized to update Lesson");
+            return $this->error("You are not authorized to update a lesson.");
         }
 
-        return $this->success("Lesson successfully updated",[
-            'referenceNumber' => $lesson->reference_number,
-            'lessonNumber' => $lesson->lesson_number,
-            'title' => $lesson->title,
-            'video' => $lesson->video,
-            'exampleCode' => $lesson->example_code,
-            'output' => $lesson->output,
-            'explanation' => $lesson->explanation,
-            'chapter' => $lesson->chapter->title
+        return $this->success("Lesson successfully updated.",[
+            'programming_language' => $lesson->chapter->programmingLanguage->name,
+            'chapter' => $lesson->chapter->chapter_number . ' ' . $lesson->chapter->chapter_name,
+            'lesson_number' => $lesson->lesson_number,
+            'lesson_title' => $lesson->lesson_title,
+            'lesson_description' => $lesson->lesson_description,
+            'lesson_video' => $lesson->lesson_video,
+            'lesson_example_code' => $lesson->lesson_example_code,
+            'lesson_output' => $lesson->lesson_output,
+            'lesson_explanation' => $lesson->lesson_explanation,
         ]);
-
 
     }
 }

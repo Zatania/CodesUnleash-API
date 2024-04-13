@@ -15,16 +15,15 @@ class ShowLessonRepository extends BaseRepository
         $videoUrl = Storage::url("{$lesson->folder}/{$lesson->video}");
 
         return $this->success("Lesson Found", [
-            'programmingLanguage' => $lesson->chapter->programmingLanguage->name,
-            'chapter' => $lesson->chapter->title,
-            'referenceNumber' => $lesson->reference_number,
-            'lessonNumber' => $lesson->lesson_number,
-            'title' => $lesson->title,
-            'description' => $lesson->description,
-            'video' => asset($videoUrl),
-            'exampleCode' => $lesson->example_code,
-            'output' => $lesson->output,
-            'explanation' => $lesson->explanation,
+            'programming_language' => $lesson->chapter->programmingLanguage->name,
+            'chapter' => $lesson->chapter->chapter_number . ' ' . $lesson->chapter->chapter_name,
+            'lesson_number' => $lesson->lesson_number,
+            'lesson_title' => $lesson->lesson_title,
+            'lesson_description' => $lesson->lesson_description,
+            'lesson_video' => $lesson->lesson_video,
+            'lesson_example_code' => $lesson->lesson_example_code,
+            'lesson_output' => $lesson->lesson_output,
+            'lesson_explanation' => $lesson->lesson_explanation,
         ]);
     }
 }

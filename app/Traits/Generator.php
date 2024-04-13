@@ -46,17 +46,6 @@ trait Generator
         return $referenceNumber;
     }
 
-    protected function lessonFolder(){
-
-        do {
-
-            $folder = bin2hex(random_bytes(6));
-
-        } while (Lesson::where("folder", $folder)->first());
-
-        return $folder;
-    }
-
     protected function quizReferenceNumber(){
 
         do {

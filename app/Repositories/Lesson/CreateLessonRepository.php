@@ -8,41 +8,37 @@ use App\Models\Lesson;
 
 class CreateLessonRepository extends BaseRepository
 {
-    public function execute($request){
-        if ($this->user()->hasRole('ADMIN')){
-
-            $folder = $this->lessonFolder();
-            $videoFilePath = $request->file('video')->store("public/".$folder);
-
+    public function execute($request)
+    {
+        if ($this->user()->hasRole('ADMIN')) {
             $lesson = Lesson::create([
                 'reference_number' => $this->lessonReferenceNumber(),
-                'lesson_number' => $request->lessonNumber,
-                'title' => $request->title,
-                'description' => $request->description,
-                'folder' => $folder,
-                'video' => basename($videoFilePath),
-                'example_code' => $request->exampleCode,
-                'output' => $request->output,
-                'explanation' => $request->explanation,
-                'chapter_id' => $this->getChapterId($request->chapter)
+                'chapter_id' => $this->getChapterId($request->chapter_reference_number),
+                'lesson_number' => $request->lesson_number,
+                'lesson_title' => $request->lesson_title,
+                'lesson_description' => $request->lesson_description,
+                'lesson_video' => $request->lesson_video,
+                'lesson_example_code' => $request->lesson_example_code,
+                'lesson_output' => $request->lesson_output,
+                'lesson_explanation' => $request->lesson_explanation
             ]);
-        }
-        else{
-            return $this->error("You are not authorized to create Lesson");
+        } else {
+            return $this->error("You are not authorized to create a lesson.");
         }
 
-        return $this->success("Lesson successfully created", [
+        // Return success response with lesson details
+        return $this->success("Lesson successfully created.", [
             'programmingLanguage' => $lesson->chapter->programmingLanguage->name,
-            'chapter' => $lesson->chapter->title,
-            'referenceNumber' => $lesson->reference_number,
-            'lessonNumber' => $lesson->lesson_number,
-            'title' => $lesson->title,
-            'description' => $lesson->description,
-            'folder' => $lesson->folder,
-            'video' => $lesson->video,
-            'exampleCode' => $lesson->example_code,
-            'output' => $lesson->output,
-            'explanation' => $lesson->explanation
+            'chapter_number' => $lesson->chapter->chapter_number,
+            'chapter_name' => $lesson->chapter->chapter_name,
+            'reference_number' => $lesson->reference_number,
+            'lesson_number' => $lesson->lesson_number,
+            'lesson_title' => $lesson->lesson_title,
+            'lesson_description' => $lesson->lesson_description,
+            'lesson_video' => $lesson->lesson_video,
+            'lesson_example_code' => $lesson->lesson_example_code,
+            'lesson_output' => $lesson->lesson_output,
+            'lesson_explanation' => $lesson->lesson_explanation,
         ]);
     }
 }

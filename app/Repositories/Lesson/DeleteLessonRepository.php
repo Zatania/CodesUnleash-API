@@ -16,9 +16,9 @@ class DeleteLessonRepository extends BaseRepository
 
         }
         else{
-            return $this->error("You are not authorized to delete Lesson");
+            return $this->error("You are not authorized to delete a lesson.");
         }
 
-        return $this->success("Lesson successfully deleted");
+        return $this->success("Lesson successfully deleted.");
     }
 }

@@ -28,14 +28,14 @@ class CreateLessonRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'lessonNumber' => ['required', 'string', 'unique:lessons,lesson_number,NULL,id,chapter_id,'.$this->getChapterId($this->chapter)],
-            'title' => ['required', 'string', 'unique:lessons,title,NULL,id,chapter_id,'.$this->getChapterId($this->chapter)],
-            'description' => ['required', 'string'],
-            'video' => ['required', "mimes:mp4,mkv", "max:30000"],
-            'exampleCode' => ['required', 'string'],
-            'output' => ['required', 'string'],
-            'explanation' => ['required', 'string'],
-            'chapter' => ['required', 'string']
+            'chapter_reference_number' => ['required', 'string'],
+            'lesson_number' => ['required', 'string', 'unique:lessons,lesson_number,NULL,id,chapter_id,' . $this->getChapterId($this->chapter_reference_number)],
+            'lesson_title' => ['required', 'string', 'unique:lessons,lesson_title,NULL,id,chapter_id,' . $this->getChapterId($this->chapter_reference_number)],
+            'lesson_description' => ['required', 'string'],
+            'lesson_video' => ['required', 'string'],
+            'lesson_example_code' => ['required', 'string'],
+            'lesson_output' => ['required', 'string'],
+            'lesson_explanation' => ['required', 'string']
         ];
     }
 }

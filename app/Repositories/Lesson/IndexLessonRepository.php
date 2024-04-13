@@ -10,17 +10,31 @@ class IndexLessonRepository extends BaseRepository
 {
     public function execute(){
         $allLessons = Lesson::all();
+        $lessonsByChapters = [];
 
-        $lessons = [];
+        foreach ($allLessons as $lesson) {
+            $chapter = $lesson->chapter->chapter_number . ' ' .$lesson->chapter->chapter_name;
 
-        foreach($allLessons as $lesson){
-            $lessons[] = [
-                'referenceNumber' => $lesson->reference_number,
-                'lessonNumber' => $lesson->lesson_number,
-                'title' => $lesson->title,
+            if (!isset($lessonsByChapters[$chapter])) {
+                $lessonsByChapters[$chapter] = [];
+            }
+
+            $lessonsByChapters[$chapter][] = [
+                'reference_number' => $lesson->reference_number,
+                'lesson_number' => $lesson->lesson_number,
+                'lesson_title' => $lesson->lesson_title
             ];
         }
 
-        return $this->success("List of All Lessons", $lessons);
+        $formattedLessons = [];
+
+        foreach ($lessonsByChapters as $chapter => $lessons) {
+            $formattedLessons[] = [
+                'chapter' => $chapter,
+                'lessons' => $lessons
+            ];
+        }
+
+        return $this->success("List of All Lessons", $formattedLessons);
     }
 }
