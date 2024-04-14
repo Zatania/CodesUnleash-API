@@ -9,7 +9,9 @@ use App\Http\Controllers\{
     ChapterController,
     LessonController,
     ChapterAssessmentController,
-    ExamController
+    ExamController,
+    BadgeController,
+    UserBadgeController
 };
 
 /*
@@ -22,16 +24,20 @@ use App\Http\Controllers\{
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+//user
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'prefix' => 'user'
+], function ($route) {
+    /* $route->get('/', [UserController::class, 'user']);
+    $route->put('/update', [UserController::class, 'update']);
+    $route->put('/update-password', [UserController::class, 'updatePassword']);
+    $route->delete('/delete', [UserController::class, 'delete']); */
+    $route->post('/add-badge', [UserBadgeController::class, 'addUserBadge']);
 });
 
 Route::group([
 ], function ($route) {
-    //Route::post('/login', [AuthController::class, 'login'])->name('login');
-    //$route->post('/login', [AuthController::class, 'login'])->name('login');
-
     $route->post('/login', [AuthController::class, 'login']);
     $route->post('/register', [AuthController::class, 'register']);
     $route->post('/verify-email', [AuthController::class, 'verifyEmail']);
@@ -106,4 +112,17 @@ Route::group([
     $route->get('/view/question/{referenceNumber}', [ExamController::class, 'viewQuestion']);
     $route->put('/update/{referenceNumber}', [ExamController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [ExamController::class, 'delete']);
+});
+
+//badge
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'prefix' => 'badge'
+], function ($route) {
+    $route->get('/', [BadgeController::class, 'index']);
+    $route->post('/create', [BadgeController::class, 'create']);
+    $route->get('/view/{referenceNumber}', [BadgeController::class, 'show']);
+    $route->put('/update/{referenceNumber}', [BadgeController::class, 'update']);
+    $route->delete('/delete/{referenceNumber}', [BadgeController::class, 'delete']);
+    $route->post('/upload-image', [BadgeController::class, 'uploadBadgeImage']);
 });
