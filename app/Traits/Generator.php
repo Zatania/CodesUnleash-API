@@ -13,7 +13,7 @@ use App\Models\{
 
 trait Generator
 {
-    protected function programmingLanguageReferenceNumber(){
+    public function programmingLanguageReferenceNumber(){
 
         do {
 
@@ -24,7 +24,7 @@ trait Generator
         return $referenceNumber;
     }
 
-    protected function chapterReferenceNumber(){
+    public function chapterReferenceNumber(){
 
         do {
 
@@ -35,7 +35,7 @@ trait Generator
         return $referenceNumber;
     }
 
-    protected function chapterAssessmentReferenceNumber() {
+    public function chapterAssessmentReferenceNumber() {
             
         do {
 
@@ -46,7 +46,7 @@ trait Generator
         return $referenceNumber;
     }
 
-    protected function lessonReferenceNumber(){
+    public function lessonReferenceNumber(){
 
         do {
 
@@ -57,7 +57,7 @@ trait Generator
         return $referenceNumber;
     }
     
-    protected function examReferenceNumber(){
+    public function examReferenceNumber(){
 
         do {
 
