@@ -22,7 +22,7 @@ class ProgrammingLanguage extends Model
         'updated_at'
     ];
 
-    protected function chapters(){
+    public function chapters(){
         return $this->hasMany(Chapter::class);
     }
 }
