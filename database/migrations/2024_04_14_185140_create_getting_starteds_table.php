@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('getting_starteds', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->default('Getting Started');
             $table->string('step');
             $table->text('description');
             $table->timestamps();
