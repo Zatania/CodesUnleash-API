@@ -41,32 +41,32 @@ class LessonController extends Controller
         $this->delete = $delete;
     }
 
-    protected function index(IndexLessonRequest $request)
+    public function index(IndexLessonRequest $request)
     {
         return $this->index->execute();
     }
 
-    protected function create(CreateLessonRequest $request)
+    public function create(CreateLessonRequest $request)
     {
         return $this->create->execute($request);
     }
 
-    protected function show(ShowLessonRequest $request, $referenceNumber)
+    public function show(ShowLessonRequest $request, $referenceNumber)
     {
         return $this->show->execute($referenceNumber);
     }
 
-    protected function update(UpdateLessonRequest $request, $referenceNumber)
+    public function update(UpdateLessonRequest $request, $referenceNumber)
     {
         return $this->update->execute($request, $referenceNumber);
     }
 
-    protected function delete(DeleteLessonRequest $request, $referenceNumber)
+    public function delete(DeleteLessonRequest $request, $referenceNumber)
     {
         return $this->delete->execute($referenceNumber);
     }
 
-    protected function uploadVideo(Request $request)
+    public function uploadVideo(Request $request)
     {
         $request->validate([
             'video' => 'required|mimetypes:video/mp4|max:50000', // Adjust max file size as needed
