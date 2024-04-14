@@ -8,7 +8,9 @@ use App\Models\{
     Chapter,
     Lesson,
     ChapterAssessment,
-    Exam
+    Exam,
+    Badge,
+    UserBadge
 };
 
 trait Generator
@@ -64,6 +66,28 @@ trait Generator
             $referenceNumber = bin2hex(random_bytes(6));
 
         } while (Exam::where("reference_number", $referenceNumber)->first());
+
+        return $referenceNumber;
+    }
+
+    public function badgeReferenceNumber() 
+    {
+        do {
+
+            $referenceNumber = bin2hex(random_bytes(6));
+
+        } while (Badge::where("reference_number", $referenceNumber)->first());
+
+        return $referenceNumber;
+    }
+
+    public function userBadgeReferenceNumber()
+    {
+        do {
+
+            $referenceNumber = bin2hex(random_bytes(6));
+
+        } while (UserBadge::where("reference_number", $referenceNumber)->first());
 
         return $referenceNumber;
     }
