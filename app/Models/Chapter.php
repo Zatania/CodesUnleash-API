@@ -26,20 +26,20 @@ class Chapter extends Model
         'updated_at'
     ];
 
-    protected function programmingLanguage(){
+    public function programmingLanguage(){
         return $this->belongsTo(ProgrammingLanguage::class);
     }
 
-    protected function lessons(){
+    public function lessons(){
         return $this->hasMany(Lesson::class);
     }
 
-    protected function chapterAssessment()
+    public function chapterAssessment()
     {
         return $this->hasOne(ChapterAssessment::class);
     }
 
-    protected function exam()
+    public function exam()
     {
         return $this->hasOne(Exam::class);
     }

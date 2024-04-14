@@ -30,7 +30,7 @@ class Lesson extends Model
         'updated_at'
     ];
 
-    protected function chapter(){
+    public function chapter(){
         return $this->belongsTo(Chapter::class);
     }
 }
