@@ -4,10 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ProgrammingLanguage;
-use App\Models\Lesson;
-use App\Models\ChapterAssessment;
-use App\Models\Exam;
+use App\Models\{
+    ProgrammingLanguage,
+    Lesson,
+    ChapterAssessment,
+    Exam,
+    UserProgressChapter,
+    UserProgressExam,
+    UserProgressChapterAssessment
+};
 
 class Chapter extends Model
 {
@@ -15,7 +20,6 @@ class Chapter extends Model
 
     protected $fillable = [
         'reference_number',
-        'chapter_number',
         'chapter_name',
         'programming_language_id'
     ];
@@ -34,13 +38,28 @@ class Chapter extends Model
         return $this->hasMany(Lesson::class);
     }
 
-    public function chapterAssessment()
+    public function chapterAssessments()
     {
-        return $this->hasOne(ChapterAssessment::class);
+        return $this->hasMany(ChapterAssessment::class);
     }
 
-    public function exam()
+    public function exams()
     {
-        return $this->hasOne(Exam::class);
+        return $this->hasMany(Exam::class);
+    }
+
+    public function userProgressChapters()
+    {
+        return $this->hasMany(UserProgressChapter::class);
+    }
+
+    public function userProgressExam()
+    {
+        return $this->hasMany(UserProgressExam::class);
+    }
+
+    public function userProgressChapterAssessment()
+    {
+        return $this->hasMany(UserProgressChapterAssessment::class);
     }
 }

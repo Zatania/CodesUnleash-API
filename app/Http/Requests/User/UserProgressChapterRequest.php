@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Chapter;
+namespace App\Http\Requests\User;
 
 use App\Http\Requests\ResponseRequest;
 
-class UpdateChapterRequest extends ResponseRequest
+class UserProgressChapterRequest extends ResponseRequest
 {
      /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class UpdateChapterRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'chapter_name' => 'required|string'
+            'user_id' => 'required|exists:users,id',
+            'chapter_id' => 'required|exists:chapters,id',
+            'completed' => 'required|boolean'
         ];
     }
 }

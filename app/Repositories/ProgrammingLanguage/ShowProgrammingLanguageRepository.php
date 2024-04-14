@@ -16,7 +16,6 @@ class ShowProgrammingLanguageRepository extends BaseRepository
         foreach($allChapters as $chapter){
             $chapters[] = [
                 'referenceNumber' => $chapter->reference_number,
-                'chapter_number' => $chapter->chapter_number,
                 'chapter_name' => $chapter->chapter_name
             ];
         }

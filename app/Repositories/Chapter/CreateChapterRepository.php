@@ -12,7 +12,6 @@ class CreateChapterRepository extends BaseRepository
         if ($this->user()->hasRole('ADMIN')){
             $chapter = Chapter::create([
                 'reference_number' => $this->chapterReferenceNumber(),
-                'chapter_number' => $request->chapter_number,
                 'chapter_name' => $request->chapter_name,
                 'programming_language_id' => $this->getProgrammingLanguageId($request->programmingLanguage)
             ]);
@@ -24,7 +23,6 @@ class CreateChapterRepository extends BaseRepository
         return $this->success("Chapter successfully created",[
             'programmingLanguage' => $chapter->programmingLanguage->name,
             'reference_number' => $chapter->reference_number,
-            'chapter_number' => $chapter->chapter_number,
             'chapter_name' => $chapter->chapter_name
         ]);
     }

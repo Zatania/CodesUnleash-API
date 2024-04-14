@@ -28,7 +28,6 @@ class CreateChapterRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'chapter_number' => ['integer', 'required', 'unique:chapters,chapter_number,NULL,id,programming_language_id,'.$this->getProgrammingLanguageId($this->programmingLanguage)],
             'chapter_name' => ['string', 'required', 'unique:chapters,chapter_name,NULL,id,programming_language_id,'.$this->getProgrammingLanguageId($this->programmingLanguage)],
             'programmingLanguage' => ['string', 'required']
         ];

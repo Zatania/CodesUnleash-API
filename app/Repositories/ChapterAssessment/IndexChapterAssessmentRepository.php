@@ -13,7 +13,7 @@ class IndexChapterAssessmentRepository extends BaseRepository
         $chapterAssessmentByChapter = [];
 
         foreach ($allChapterAssessment as $chapterAssessment) {
-            $chapter = $chapterAssessment->chapter->chapter_number . ' ' . $chapterAssessment->chapter->chapter_name;
+            $chapter = $chapterAssessment->chapter->chapter_name;
 
             if (!isset($chapterAssessmentByChapter[$chapter])) {
                 $chapterAssessmentByChapter[$chapter] = [];

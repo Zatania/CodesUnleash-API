@@ -29,7 +29,6 @@ class CreateLessonRepository extends BaseRepository
         // Return success response with lesson details
         return $this->success("Lesson successfully created.", [
             'programmingLanguage' => $lesson->chapter->programmingLanguage->name,
-            'chapter_number' => $lesson->chapter->chapter_number,
             'chapter_name' => $lesson->chapter->chapter_name,
             'reference_number' => $lesson->reference_number,
             'lesson_number' => $lesson->lesson_number,

@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chapters', function (Blueprint $table) {
+        Schema::create('user_progress_chapters', function (Blueprint $table) {
             $table->id();
-            $table->string('reference_number');
-            $table->foreignId('programming_language_id')->constrained()->onDelete('cascade');
-            $table->string('chapter_name');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('chapter_id')->constrained()->onDelete('cascade');
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chapters');
+        Schema::dropIfExists('user_progress_chapters');
     }
 };

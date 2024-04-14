@@ -21,7 +21,6 @@ class IndexChapterRepository extends BaseRepository
 
             $chaptersByLanguage[$language][] = [
                 'reference_number' => $chapter->reference_number,
-                'chapter_number' => $chapter->chapter_number,
                 'chapter_name' => $chapter->chapter_name
             ];
         }

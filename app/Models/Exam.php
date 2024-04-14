@@ -4,6 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\{
+    Chapter,
+    UserProgressExam
+};
 
 class Exam extends Model
 {
@@ -30,5 +34,10 @@ class Exam extends Model
     public function chapter()
     {
         return $this->belongsTo(Chapter::class);
+    }
+
+    public function userProgressExams()
+    {
+        return $this->hasMany(UserProgressExam::class);
     }
 }

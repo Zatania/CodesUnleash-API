@@ -30,7 +30,7 @@ class UpdateLessonRepository extends BaseRepository
 
         return $this->success("Lesson successfully updated.",[
             'programming_language' => $lesson->chapter->programmingLanguage->name,
-            'chapter' => $lesson->chapter->chapter_number . ' ' . $lesson->chapter->chapter_name,
+            'chapter' => $lesson->chapter->chapter_name,
             'lesson_number' => $lesson->lesson_number,
             'lesson_title' => $lesson->lesson_title,
             'lesson_description' => $lesson->lesson_description,

@@ -13,7 +13,7 @@ class IndexExamRepository extends BaseRepository
         $examsByChapters = [];
 
         foreach ($allExams as $exam) {
-            $chapter = $exam->chapter->chapter_number . ' ' . $exam->chapter->chapter_name;
+            $chapter = $exam->chapter->chapter_name;
 
             if (!isset($examsByChapters[$chapter])) {
                 $examsByChapters[$chapter] = [];

@@ -8,6 +8,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\{
+    UserProgressLesson,
+    UserProgressChapter,
+    UserProgressChapterAssessment,
+    UserProgressExam,
+    UserBadge
+};
 
 class User extends Authenticatable
 {
@@ -50,4 +57,30 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function userProgressLessons()
+    {
+        return $this->hasMany(UserProgressLesson::class);
+    }
+
+    public function userProgressChapters()
+    {
+        return $this->hasMany(UserProgressChapter::class);
+    }
+
+    public function userProgressChapterAssessments()
+    {
+        return $this->hasMany(UserProgressChapterAssessment::class);
+    }
+
+    public function userProgressExam()
+    {
+        return $this->hasMany(UserProgressExam::class);
+    }
+
+    public function userBadges()
+    {
+        return $this->hasMany(UserBadge::class);
+    }
+
 }

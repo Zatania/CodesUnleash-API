@@ -5,7 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\{
-    Chapter
+    Chapter,
+    UserProgressLesson
 };
 
 class Lesson extends Model
@@ -32,5 +33,10 @@ class Lesson extends Model
 
     public function chapter(){
         return $this->belongsTo(Chapter::class);
+    }
+
+    public function userProgressLessons()
+    {
+        return $this->hasMany(UserProgressLesson::class);
     }
 }

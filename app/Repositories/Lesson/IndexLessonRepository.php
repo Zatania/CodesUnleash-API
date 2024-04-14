@@ -13,7 +13,7 @@ class IndexLessonRepository extends BaseRepository
         $lessonsByChapters = [];
 
         foreach ($allLessons as $lesson) {
-            $chapter = $lesson->chapter->chapter_number . ' ' .$lesson->chapter->chapter_name;
+            $chapter = $lesson->chapter->chapter_name;
 
             if (!isset($lessonsByChapters[$chapter])) {
                 $lessonsByChapters[$chapter] = [];
