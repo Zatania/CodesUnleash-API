@@ -11,7 +11,8 @@ use App\Http\Controllers\{
     ChapterAssessmentController,
     ExamController,
     BadgeController,
-    UserBadgeController
+    UserBadgeController,
+    UserController
 };
 
 /*
@@ -29,10 +30,10 @@ Route::group([
     'middleware' => 'auth:sanctum',
     'prefix' => 'user'
 ], function ($route) {
-    /* $route->get('/', [UserController::class, 'user']);
-    $route->put('/update', [UserController::class, 'update']);
-    $route->put('/update-password', [UserController::class, 'updatePassword']);
-    $route->delete('/delete', [UserController::class, 'delete']); */
+    $route->get('/', [UserController::class, 'index']);
+    $route->get('/view/{id}', [UserController::class, 'view']);
+    /* $route->put('/update-password/{id}', [UserController::class, 'updatePassword']);
+    $route->delete('/delete/{id}', [UserController::class, 'delete']); */
     $route->post('/add-badge', [UserBadgeController::class, 'addUserBadge']);
 });
 
