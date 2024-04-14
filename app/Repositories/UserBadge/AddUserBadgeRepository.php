@@ -4,16 +4,17 @@ namespace App\Repositories\UserBadge;
 
 use App\Repositories\BaseRepository;
 
-use App\Models\UserBadge;
+use App\Models\{UserBadge, User, Badge};
 
 class AddUserBadgeRepository extends BaseRepository
 {
     public function execute($request){
-        if ($this->user()->hasRole('ADMIN')){
+        if ($this->user()->hasRole('ADMIN') || $this->user()->hasRole('USER')){
             $userBadge = UserBadge::create([
                 'reference_number' => $this->userBadgeReferenceNumber(),
-                'user_id' => $request->user_id,
-                'badge_id' => $request->badge_id,
+                'user_id' => User::where('username', $request->username)->first()->id,
+                $reference_number = Badge::where('badge_name', $request->badge_name)->first()->reference_number,
+                'badge_id' => $this->getBadgeId($reference_number),
                 'completed_at' => now()
             ]);
 

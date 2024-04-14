@@ -28,8 +28,8 @@ class AddUserBadgeRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:users,id',
-            'badge_id' => 'required|exists:badges,id',
+            'username' => 'required|exists:users,username',
+            'badge_name' => 'required|exists:badges,badge_name',
         ];
     }
 }

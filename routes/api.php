@@ -39,6 +39,7 @@ Route::group([
     /* $route->put('/update-password/{id}', [UserController::class, 'updatePassword']);
     $route->delete('/delete/{id}', [UserController::class, 'delete']); */
     $route->post('/add-badge', [UserBadgeController::class, 'addUserBadge']);
+    $route->get('/badge/{id}', [UserBadgeController::class, 'getUserBadge']);
 
     //user-progress-chapter
     $route->get('/progress-chapter', [UserProgressChapterController::class, 'index']);

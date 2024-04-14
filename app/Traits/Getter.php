@@ -8,7 +8,8 @@ use App\Models\{
     Chapter,
     Lesson,
     ChapterAssessment,
-    Exam
+    Exam,
+    Badge
 };
 
 trait Getter
@@ -47,5 +48,11 @@ trait Getter
         $exam = Exam::where('reference_number', $referenceNumber)->first();
 
         return $exam->id;
+    }
+
+    protected function getBadgeId($referenceNumber) {
+        $badge = Badge::where('reference_number', $referenceNumber)->first();
+
+        return $badge->id;
     }
 }
