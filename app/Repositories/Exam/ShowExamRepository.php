@@ -6,16 +6,16 @@ use App\Repositories\BaseRepository;
 
 use App\Models\{
     Exam,
-    Chapter
+    ProgrammingLanguage
 };
 
 class ShowExamRepository extends BaseRepository
 {
     public function execute($referenceNumber){
-        $chapter = Chapter::where('reference_number', $referenceNumber)->firstOrFail();
-        $exams = Exam::where('chapter_id', $chapter->id)->get();
+        $programmingLanguage = ProgrammingLanguage::where('reference_number', $referenceNumber)->firstOrFail();
+        $exams = Exam::where('programming_language_id', $programmingLanguage->id)->get();
 
-        return $this->success("Chapter Exam Found", $exams);
+        return $this->success("Programming Language Exam Found.", $exams);
     }
 
     public function viewQuestion($referenceNumber){

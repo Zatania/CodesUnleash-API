@@ -25,4 +25,12 @@ class ProgrammingLanguage extends Model
     public function chapters(){
         return $this->hasMany(Chapter::class);
     }
+
+    public function gettingStarted() {
+        return $this->hasOne(GettingStarted::class);
+    }
+
+    public function exams() {
+        return $this->hasMany(Exam::class);
+    }
 }

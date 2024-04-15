@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->string('reference_number');
-            $table->foreignId('chapter_id')->constrained()->onDelete('cascade');
+            $table->foreignId('programming_language_id')->constrained()->onDelete('cascade');
             $table->integer('question_number');
             $table->text('question');
+            $table->text('code_snippet')->nullable();
             $table->text('choice_1');
             $table->text('choice_2');
             $table->text('choice_3');

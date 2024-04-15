@@ -16,7 +16,9 @@ use App\Http\Controllers\{
     UserProgressChapterController,
     UserProgressLessonController,
     UserProgressChapterAssessmentController,
-    UserProgressExamController
+    UserProgressExamController,
+    GettingStartedController,
+    GettingStartedStepsController
 };
 
 /*
@@ -132,7 +134,6 @@ Route::group([
     $route->post('/create', [ExamController::class, 'create']);
     $route->get('/view/{referenceNumber}', [ExamController::class, 'show']);
     $route->get('/view/question/{referenceNumber}', [ExamController::class, 'viewQuestion']);
-    $route->put('/update/{referenceNumber}', [ExamController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [ExamController::class, 'delete']);
 });
 
@@ -147,4 +148,18 @@ Route::group([
     $route->put('/update/{referenceNumber}', [BadgeController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [BadgeController::class, 'delete']);
     $route->post('/upload-image', [BadgeController::class, 'uploadBadgeImage']);
+});
+
+//getting-started
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'prefix' => 'getting-started'
+], function ($route) {
+    $route->get('/', [GettingStartedController::class, 'index']);
+    $route->post('/create', [GettingStartedController::class, 'create']);
+    $route->get('/view/{referenceNumber}', [GettingStartedController::class, 'view']);
+    $route->post('/upload-image', [GettingStartedController::class, 'uploadGettingStartedImage']);
+    $route->get('/steps', [GettingStartedStepsController::class, 'index']);
+    $route->post('/steps/create', [GettingStartedStepsController::class, 'create']);
+    $route->get('/steps/view/{referenceNumber}', [GettingStartedStepsController::class, 'show']);
 });

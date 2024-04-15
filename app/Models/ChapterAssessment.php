@@ -18,6 +18,7 @@ class ChapterAssessment extends Model
         'chapter_id',
         'question_number',
         'question',
+        'code_snippet',
         'choice_1',
         'choice_2',
         'choice_3',

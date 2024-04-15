@@ -4,25 +4,33 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\{UserProgressGettingStarted, GettingStartedSteps};
+use App\Models\{UserProgressGettingStarted, GettingStartedSteps, ProgrammingLanguage};
 
 class GettingStarted extends Model
 {
     use HasFactory;
 
-    protected $hidden = [
+    protected $fillable = [
+        'programming_language_id',
         'name',
+    ];
+    protected $hidden = [
         'created_at',
         'updated_at'
     ];
 
+    public function programmingLanguage()
+    {
+        return $this->belongsTo(ProgrammingLanguage::class);
+    }
+
     public function userProgressGettingStarted()
     {
         return $this->hasMany(UserProgressGettingStarted::class);
-    };
+    }
 
     public function gettingStartedSteps()
     {
         return $this->hasMany(GettingStartedSteps::class);
-    };
+    }
 }

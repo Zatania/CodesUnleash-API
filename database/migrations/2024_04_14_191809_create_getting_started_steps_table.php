@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('getting_starteds', function (Blueprint $table) {
+        Schema::create('getting_started_steps', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('programming_language_id')->constrained()->onDelete('cascade');
-            $table->string('name')->default('Getting Started');
+            $table->foreignId('getting_started_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->text('description');
+            $table->string('image');
+            $table->integer('order');
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('getting_starteds');
+        Schema::dropIfExists('getting_started_steps');
     }
 };

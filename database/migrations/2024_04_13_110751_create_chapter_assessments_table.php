@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('chapter_id')->constrained()->onDelete('cascade');
             $table->integer('question_number');
             $table->text('question');
+            $table->text('code_snippet')->nullable();
             $table->text('choice_1');
             $table->text('choice_2');
             $table->text('choice_3');

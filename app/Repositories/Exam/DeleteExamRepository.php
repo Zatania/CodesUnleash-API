@@ -11,19 +11,19 @@ class DeleteExamRepository extends BaseRepository
     public function execute($referenceNumber)
     {
         if ($this->user()->hasRole('ADMIN')) {
-            $exams = Exam::whereHas('chapter', function ($query) use ($referenceNumber) {
+            $exams = Exam::whereHas('programmingLanguage', function ($query) use ($referenceNumber) {
                 $query->where('reference_number', $referenceNumber);
             })->get();
 
             if ($exams->isEmpty()) {
-                return $this->error("No exams found for the specified chapter.");
+                return $this->error("No exams found for the specified programming language.");
             }
             
             foreach ($exams as $exam) {
                 $exam->delete();
             }
 
-            return $this->success("Exams for the specified chapter successfully deleted.");
+            return $this->success("Exams for the specified programming language successfully deleted.");
         } else {
             return $this->error("You are not authorized to delete exams.");
         }

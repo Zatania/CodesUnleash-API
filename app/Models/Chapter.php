@@ -8,7 +8,6 @@ use App\Models\{
     ProgrammingLanguage,
     Lesson,
     ChapterAssessment,
-    Exam,
     UserProgressChapter,
     UserProgressExam,
     UserProgressChapterAssessment
@@ -41,11 +40,6 @@ class Chapter extends Model
     public function chapterAssessments()
     {
         return $this->hasMany(ChapterAssessment::class);
-    }
-
-    public function exams()
-    {
-        return $this->hasMany(Exam::class);
     }
 
     public function userProgressChapters()

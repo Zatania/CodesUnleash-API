@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Chapter;
+namespace App\Http\Requests\GettingStarted;
 
 use App\Http\Requests\ResponseRequest;
 
 use App\Traits\Getter;
 
-class CreateChapterRequest extends ResponseRequest
+class GettingStartedRequest extends ResponseRequest
 {
     use Getter;
 
@@ -28,7 +28,7 @@ class CreateChapterRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'programmingLanguage' => ['string', 'required']
+            'programmingLanguage' => 'required|exists:programming_languages,reference_number'
         ];
     }
 }

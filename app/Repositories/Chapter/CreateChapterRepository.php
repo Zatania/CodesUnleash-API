@@ -22,8 +22,7 @@ class CreateChapterRepository extends BaseRepository
 
         return $this->success("Chapter successfully created",[
             'programmingLanguage' => $chapter->programmingLanguage->name,
-            'reference_number' => $chapter->reference_number,
-            'chapter_name' => $chapter->chapter_name
+            'reference_number' => $chapter->reference_number
         ]);
     }
 }

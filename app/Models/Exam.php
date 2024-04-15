@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\{
-    Chapter,
+    ProgrammingLanguage,
     UserProgressExam
 };
 
@@ -15,9 +15,10 @@ class Exam extends Model
 
     protected $fillable = [
         'reference_number',
-        'chapter_id',
+        'programming_language_id',
         'question_number',
         'question',
+        'code_snippet',
         'choice_1',
         'choice_2',
         'choice_3',
@@ -31,9 +32,9 @@ class Exam extends Model
         'updated_at'
     ];
 
-    public function chapter()
+    public function programmingLanguage()
     {
-        return $this->belongsTo(Chapter::class);
+        return $this->belongsTo(ProgrammingLanguage::class);
     }
 
     public function userProgressExams()

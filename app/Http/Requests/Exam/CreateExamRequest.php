@@ -27,7 +27,7 @@ class CreateExamRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'chapter_reference_number' => ['required', 'exists:chapters,reference_number'],
+            'programming_language_reference_number' => ['required', 'exists:programming_languages,reference_number'],
             'question_number' => ['required', 'numeric'],
             'question' => ['required', 'string'],
             'choice_1' => ['required', 'string'],

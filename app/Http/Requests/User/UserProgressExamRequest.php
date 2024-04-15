@@ -25,7 +25,7 @@ class UserProgressExamRequest extends ResponseRequest
     {
         return [
             'user_id' => 'required|integer',
-            'chapter_id' => 'required|integer',
+            'exam_id' => 'required|integer',
             'score' => 'required|integer'
         ];
     }

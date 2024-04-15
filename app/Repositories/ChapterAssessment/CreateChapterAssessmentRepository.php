@@ -10,7 +10,7 @@ class CreateChapterAssessmentRepository extends BaseRepository
     public function execute($request)
     {
         if ($this->user()->hasRole('ADMIN')) {
-            $chapterAssessment = ChapterAssessment::create([
+            $chapterAssessmentData = [
                 'reference_number' => $this->chapterAssessmentReferenceNumber(),
                 'chapter_id' => $this->getChapterId($request->chapter_reference_number),
                 'question_number' => $request->question_number,
@@ -20,8 +20,14 @@ class CreateChapterAssessmentRepository extends BaseRepository
                 'choice_3' => $request->choice_3,
                 'choice_4' => $request->choice_4,
                 'correct_answer' => $request->correct_answer,
-            ]);
-            
+            ];
+
+            if ($request->code_snippet != null) {
+                $chapterAssessmentData['code_snippet'] = $request->code_snippet;
+            }
+
+            $chapterAssessment = ChapterAssessment::create($chapterAssessmentData);
+
             return $this->success("Chapter Assessment successfully created.", [
                 'chapter_assessment' => $chapterAssessment,
             ]);
