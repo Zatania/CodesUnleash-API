@@ -2,7 +2,7 @@
 
 namespace App\Repositories\User;
 
-use App\Models\UserProgressChapterAssessment;
+use App\Models\{UserProgressChapterAssessment, User, Chapter};
 
 class UserProgressChapterAssessmentRepository
 {
@@ -16,8 +16,8 @@ class UserProgressChapterAssessmentRepository
     public function store(array $data)
     {
         return $this->model->create([
-            'user_id' => $data['user_id'],
-            'chapter_id' => $data['chapter_id'],
+            'user_id' => User::where('username', $data['username'])->first()->id,
+            'chapter_id' => Chapter::where('reference_number', $data['chap_ref'])->first()->id,
             'score' => $data['score'],
             'completed_at' => now(),
         ]);

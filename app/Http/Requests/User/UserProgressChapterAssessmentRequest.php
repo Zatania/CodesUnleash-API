@@ -24,8 +24,8 @@ class UserProgressChapterAssessmentRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|integer',
-            'chapter_id' => 'required|integer',
+            'username' => 'required|string',
+            'chap_ref' => 'required|string',
             'score' => 'required|integer'
         ];
     }
