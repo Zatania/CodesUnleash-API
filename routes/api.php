@@ -123,6 +123,7 @@ Route::group([
     $route->get('/view/question/{referenceNumber}', [ChapterAssessmentController::class, 'viewQuestion']);
     $route->put('/update/{referenceNumber}', [ChapterAssessmentController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [ChapterAssessmentController::class, 'delete']);
+    $route->delete('/delete/question/{referenceNumber}', [ChapterAssessmentController::class, 'deleteQuestion']);
 });
 
 //exam
@@ -135,6 +136,8 @@ Route::group([
     $route->get('/view/{referenceNumber}', [ExamController::class, 'show']);
     $route->get('/view/question/{referenceNumber}', [ExamController::class, 'viewQuestion']);
     $route->delete('/delete/{referenceNumber}', [ExamController::class, 'delete']);
+    $route->delete('/delete/question/{referenceNumber}', [ExamController::class, 'deleteQuestion']);
+    $route->put('/update/{referenceNumber}', [ExamController::class, 'update']);
 });
 
 //badge

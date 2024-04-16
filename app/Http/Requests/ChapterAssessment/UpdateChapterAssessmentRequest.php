@@ -24,6 +24,7 @@ class UpdateChapterAssessmentRequest extends ResponseRequest
     public function rules()
     {
         return [
+            'question_number' => ['required', 'numeric'],
             'question' => ['required', 'string'],
             'choice_1' => ['required', 'string'],
             'choice_2' => ['required', 'string'],

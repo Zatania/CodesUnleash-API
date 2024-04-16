@@ -9,7 +9,7 @@ use App\Models\Lesson;
 class IndexLessonRepository extends BaseRepository
 {
     public function execute(){
-        $allLessons = Lesson::all();
+        $allLessons = Lesson::all()->sortBy('lesson_number');
         $lessonsByChapters = [];
 
         foreach ($allLessons as $lesson) {
@@ -20,9 +20,15 @@ class IndexLessonRepository extends BaseRepository
             }
 
             $lessonsByChapters[$chapter][] = [
+                'chapter_reference_number' => $lesson->chapter->reference_number,
                 'reference_number' => $lesson->reference_number,
                 'lesson_number' => $lesson->lesson_number,
-                'lesson_title' => $lesson->lesson_title
+                'lesson_title' => $lesson->lesson_title,
+                'lesson_description' => $lesson->lesson_description,
+                'lesson_video' => $lesson->lesson_video,
+                'lesson_example_code' => $lesson->lesson_example_code,
+                'lesson_output' => $lesson->lesson_output,
+                'lesson_explanation' => $lesson->lesson_explanation
             ];
         }
 

@@ -70,4 +70,9 @@ class ChapterAssessmentController extends Controller
     {
         return $this->delete->execute($referenceNumber);
     }
+
+    protected function deleteQuestion(DeleteChapterAssessmentRequest $request, $referenceNumber)
+    {
+        return $this->delete->delete($referenceNumber);
+    }
 }

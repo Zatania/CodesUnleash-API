@@ -23,6 +23,7 @@ class IndexChapterAssessmentRepository extends BaseRepository
                 'reference_number' => $chapterAssessment->reference_number,
                 'question_number' => $chapterAssessment->question_number,
                 'question' => $chapterAssessment->question,
+                'code_snippet' => $chapterAssessment->code_snippet,
                 'choice_1' => $chapterAssessment->choice_1,
                 'choice_2' => $chapterAssessment->choice_2,
                 'choice_3' => $chapterAssessment->choice_3,

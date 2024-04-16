@@ -14,7 +14,14 @@ class UpdateExamRepository extends BaseRepository
 
             $exam = Exam::where('reference_number', $referenceNumber)->firstOrFail();
             $exam->update([
-                'title' => $request->title
+                'question_number' => $request->question_number,
+                'question' => $request->question,
+                'code_snippet' => $request->code_snippet,
+                'choice_1' => $request->choice_1,
+                'choice_2' => $request->choice_2,
+                'choice_3' => $request->choice_3,
+                'choice_4' => $request->choice_4,
+                'correct_answer' => $request->correct_answer,
             ]);
 
         }
@@ -23,8 +30,7 @@ class UpdateExamRepository extends BaseRepository
         }
 
         return $this->success("Exam successfully updated",[
-            'referenceNumber' => $exam->reference_number,
-            'title' => $exam->title
+            $exam
         ]);
 
     }

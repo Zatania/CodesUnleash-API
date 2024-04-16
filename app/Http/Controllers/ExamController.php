@@ -70,4 +70,9 @@ class ExamController extends Controller
     {
         return $this->delete->execute($referenceNumber);
     }
+
+    protected function deleteQuestion(DeleteExamRequest $request, $referenceNumber)
+    {
+        return $this->delete->delete($referenceNumber);
+    }
 }

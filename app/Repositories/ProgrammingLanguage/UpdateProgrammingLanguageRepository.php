@@ -15,7 +15,7 @@ class UpdateProgrammingLanguageRepository extends BaseRepository
             $programmingLanguage = ProgrammingLanguage::where('reference_number', $referenceNumber)->firstOrFail();
             $programmingLanguage->update([
                 'name' => $request->name,
-                'desrciption' => $request->description
+                'description' => $request->description
             ]);
 
         }

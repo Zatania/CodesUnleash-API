@@ -28,4 +28,19 @@ class DeleteChapterAssessmentRepository extends BaseRepository
             return $this->error("You are not authorized to delete a chapter assessment.");
         }
     }
+
+    public function delete($referenceNumber)
+    {
+        if ($this->user()->hasRole('ADMIN')) {
+            $chap_ass = ChapterAssessment::where('reference_number', $referenceNumber)->firstOrFail();
+            
+            $chap_ass->delete();
+
+            return $this->success("Chapter Assessment Question Deleted.");
+        }
+        else
+        {
+            return $this->error("You are not authorized to delete a lesson.");
+        }
+    }
 }

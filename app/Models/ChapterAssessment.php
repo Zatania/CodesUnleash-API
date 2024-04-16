@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\{
-    Chapter,
-    UserProgressChapterAssessment
+    Chapter
 };
 
 class ChapterAssessment extends Model
@@ -35,10 +34,5 @@ class ChapterAssessment extends Model
     public function chapter()
     {
         return $this->belongsTo(Chapter::class);
-    }
-
-    public function userProgressChapterAssessments()
-    {
-        return $this->hasMany(UserProgressChapterAssessment::class);
     }
 }

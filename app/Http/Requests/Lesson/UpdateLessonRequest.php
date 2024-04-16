@@ -28,7 +28,7 @@ class UpdateLessonRequest extends ResponseRequest
     {
         return [
             'chapter_reference_number' => ['required', 'string'],
-            'lesson_number' => ['required', 'string', 'unique:lessons,lesson_number,NULL,id,chapter_id,' . $this->getChapterId($this->chapter_reference_number)],
+            'lesson_number' => ['required', 'string'],
             'lesson_title' => ['required', 'string'],
             'lesson_description' => ['required', 'string'],
             'lesson_video' => ['required', 'string'],

@@ -28,4 +28,19 @@ class DeleteExamRepository extends BaseRepository
             return $this->error("You are not authorized to delete exams.");
         }
     }
+
+    public function delete($referenceNumber)
+    {
+        if ($this->user()->hasRole('ADMIN')) {
+            $exam = Exam::where('reference_number', $referenceNumber)->firstOrFail();
+            
+            $exam->delete();
+
+            return $this->success("Exam Question Deleted.");
+        }
+        else
+        {
+            return $this->error("You are not authorized to delete an exam.");
+        }
+    }
 }

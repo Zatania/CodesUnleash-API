@@ -25,7 +25,7 @@ class UpdateProgrammingLanguageRequest extends ResponseRequest
     {
         return [
             'name' => ['string','required'],
-            'description' => ['text', 'required']
+            'description' => ['string', 'required']
         ];
     }
 }
