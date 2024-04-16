@@ -23,6 +23,7 @@ class ShowLessonRepository extends BaseRepository
             'lesson_example_code' => $lesson->lesson_example_code,
             'lesson_output' => $lesson->lesson_output,
             'lesson_explanation' => $lesson->lesson_explanation,
+            'lesson_reference_number' => $lesson->reference_number,
         ]);
     }
 }
