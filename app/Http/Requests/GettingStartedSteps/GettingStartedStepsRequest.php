@@ -31,7 +31,6 @@ class GettingStartedStepsRequest extends ResponseRequest
             'programmingLanguage' => 'required|exists:programming_languages,reference_number',
             'name' => 'required|string',
             'description' => 'required|string',
-            'image' => 'required|string',
             'order' => 'required|integer'
         ];
     }
