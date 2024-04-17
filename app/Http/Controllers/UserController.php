@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\User\UserRequest;
 use App\Repositories\User\UserRepository;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -39,18 +40,19 @@ class UserController extends Controller
     public function uploadProfilePicture(Request $request, $username)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096', // Adjust max file size as needed
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:10240',
         ]);
 
-        $imagePath = $request->file('image')->store('profile-pictures', 'public');
+        $imagePath = $request->file('image')->store('images', 'public');
 
         $user = User::where('username', $username)->firstOrFail();
         $user->update([
             'profile_picture' => url(Storage::url($imagePath))
         ]);
 
-        return $imagePath;
+        return response()->json(['profile_picture' => $user->profile_picture]);
     }
+
 
     public function getProfilePicture($username)
     {

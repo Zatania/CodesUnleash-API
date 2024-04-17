@@ -8,6 +8,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler,
     Illuminate\Database\QueryException,
     Exception,
     Throwable;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -83,5 +84,17 @@ class Handler extends ExceptionHandler
         //             'errors'    =>  true,
         //         ], 422);
         // });
+        
+    }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($exception instanceof ValidationException) {
+            return response()->json([
+                'errors' => $exception->validator->errors()->all()
+            ], 422);
+        }
+
+        return parent::render($request, $exception);
     }
 }
