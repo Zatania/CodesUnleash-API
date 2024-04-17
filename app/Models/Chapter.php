@@ -38,4 +38,9 @@ class Chapter extends Model
     {
         return $this->hasMany(ChapterAssessment::class);
     }
+
+    public function userProgress()
+    {
+        return $this->hasMany(UserProgress::class);
+    }
 }
