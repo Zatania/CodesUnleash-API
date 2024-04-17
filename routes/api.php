@@ -38,6 +38,9 @@ Route::group([
     $route->delete('/delete/{id}', [UserController::class, 'delete']); */
     $route->post('/add-badge', [UserBadgeController::class, 'addUserBadge']);
     $route->get('/badge/{id}', [UserBadgeController::class, 'getUserBadge']);
+    // profile-picture
+    $route->post('/upload/{username}', [UserController::class, 'uploadProfilePicture']);
+    $route->get('/profile/{username}', [UserController::class, 'getProfilePicture']);
 });
 
 Route::group([
