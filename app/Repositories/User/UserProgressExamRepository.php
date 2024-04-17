@@ -2,7 +2,7 @@
 
 namespace App\Repositories\User;
 
-use App\Models\UserProgressExam;
+use App\Models\{UserProgressExam, User};
 
 class UserProgressExamRepository
 {
