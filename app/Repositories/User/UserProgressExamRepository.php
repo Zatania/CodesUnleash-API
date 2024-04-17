@@ -17,7 +17,6 @@ class UserProgressExamRepository
     {
         return $this->model->create([
             'user_id' => $data['user_id'],
-            'exam_id' => $data['exam_id'],
             'score' => $data['score'],
             'completed_at' => now(),
         ]);

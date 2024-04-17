@@ -13,17 +13,12 @@ class UserProgressExam extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'exam_id', 'score', 'completed_at'];
+    protected $fillable = ['user_id', 'score', 'completed_at'];
 
     protected $hidden = ['created_at', 'updated_at'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function exam()
-    {
-        return $this->belongsTo(Exam::class);
     }
 }

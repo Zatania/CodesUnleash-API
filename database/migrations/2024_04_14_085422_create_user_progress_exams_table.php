@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('user_progress_exams', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('exam_id')->constrained()->onDelete('cascade');
             $table->integer('score')->nullable();
             $table->timestamp('completed_at')->nullable();
             $table->timestamps();
