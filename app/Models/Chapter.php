@@ -7,10 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\{
     ProgrammingLanguage,
     Lesson,
-    ChapterAssessment,
-    UserProgressChapter,
-    UserProgressExam,
-    UserProgressChapterAssessment
+    ChapterAssessment
 };
 
 class Chapter extends Model
@@ -40,20 +37,5 @@ class Chapter extends Model
     public function chapterAssessments()
     {
         return $this->hasMany(ChapterAssessment::class);
-    }
-
-    public function userProgressChapters()
-    {
-        return $this->hasMany(UserProgressChapter::class);
-    }
-
-    public function userProgressExam()
-    {
-        return $this->hasMany(UserProgressExam::class);
-    }
-
-    public function userProgressChapterAssessment()
-    {
-        return $this->hasMany(UserProgressChapterAssessment::class);
     }
 }

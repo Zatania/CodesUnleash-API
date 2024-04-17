@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\{
-    ProgrammingLanguage,
-    UserProgressExam
+    ProgrammingLanguage
 };
 
 class Exam extends Model
@@ -35,10 +34,5 @@ class Exam extends Model
     public function programmingLanguage()
     {
         return $this->belongsTo(ProgrammingLanguage::class);
-    }
-
-    public function userProgressExams()
-    {
-        return $this->hasMany(UserProgressExam::class);
     }
 }

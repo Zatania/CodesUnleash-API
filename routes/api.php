@@ -12,11 +12,7 @@ use App\Http\Controllers\{
     ExamController,
     BadgeController,
     UserBadgeController,
-    UserController,
-    UserProgressChapterController,
-    UserProgressLessonController,
-    UserProgressChapterAssessmentController,
-    UserProgressExamController,
+    UserController
     GettingStartedController,
     GettingStartedStepsController
 };
@@ -42,22 +38,6 @@ Route::group([
     $route->delete('/delete/{id}', [UserController::class, 'delete']); */
     $route->post('/add-badge', [UserBadgeController::class, 'addUserBadge']);
     $route->get('/badge/{id}', [UserBadgeController::class, 'getUserBadge']);
-
-    //user-progress-chapter
-    $route->get('/progress-chapter', [UserProgressChapterController::class, 'index']);
-    $route->post('/progress-chapter/create', [UserProgressChapterController::class, 'store']);
-    $route->put('/progress-chapter/update/{id}', [UserProgressChapterController::class, 'update']);
-
-    //user-progress-lesson
-    $route->get('/progress-lesson', [UserProgressLessonController::class, 'index']);
-    $route->post('/progress-lesson/create', [UserProgressLessonController::class, 'store']);
-    $route->put('/progress-lesson/update/{id}', [UserProgressLessonController::class, 'update']);
-
-    //user-progress-chapter-assessment
-    $route->post('/progress-chapter-assessment/create', [UserProgressChapterAssessmentController::class, 'store']);
-
-    //user-progress-exam
-    $route->post('/progress-exam/create', [UserProgressExamController::class, 'store']);
 });
 
 Route::group([

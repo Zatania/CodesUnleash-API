@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\{UserProgressGettingStarted, GettingStartedSteps, ProgrammingLanguage};
+use App\Models\{GettingStartedSteps, ProgrammingLanguage};
 
 class GettingStarted extends Model
 {
@@ -22,11 +22,6 @@ class GettingStarted extends Model
     public function programmingLanguage()
     {
         return $this->belongsTo(ProgrammingLanguage::class);
-    }
-
-    public function userProgressGettingStarted()
-    {
-        return $this->hasMany(UserProgressGettingStarted::class);
     }
 
     public function gettingStartedSteps()
