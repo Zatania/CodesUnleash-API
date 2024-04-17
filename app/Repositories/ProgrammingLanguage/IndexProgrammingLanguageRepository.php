@@ -38,6 +38,7 @@ class IndexProgrammingLanguageRepository extends BaseRepository
                 $formattedGettingStarted = [
                     'steps' => $gettingStarted->gettingStartedSteps->sortBy('order')->values()->map(function ($step) {
                         return [
+                            'id' => $step->id,
                             'getting_started_id' => $step->getting_started_id,
                             'name' => $step->name,
                             'description' => $step->description,
@@ -55,10 +56,12 @@ class IndexProgrammingLanguageRepository extends BaseRepository
 
             foreach ($language->chapters as $chapter) {
                 $formattedChapter = [
+                    'id' => $chapter->id,
                     'chapter_name' => $chapter->chapter_name,
                     'reference_number' => $chapter->reference_number,
                     'lessons' => $chapter->lessons->sortBy('lesson_number')->values()->map(function ($lesson) {
                         return [
+                            'id' => $lesson->id,
                             'reference_number' => $lesson->reference_number,
                             'chapter_id' => $lesson->chapter_id,
                             'lesson_number' => $lesson->lesson_number,
