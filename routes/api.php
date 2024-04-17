@@ -12,7 +12,7 @@ use App\Http\Controllers\{
     ExamController,
     BadgeController,
     UserBadgeController,
-    UserController
+    UserController,
     GettingStartedController,
     GettingStartedStepsController
 };
