@@ -24,7 +24,7 @@ class UserProgressExamRequest extends ResponseRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|integer',
+            'username' => 'required|string',
             'score' => 'required|integer'
         ];
     }

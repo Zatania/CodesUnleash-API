@@ -16,7 +16,7 @@ class UserProgressExamRepository
     public function store(array $data)
     {
         return $this->model->create([
-            'user_id' => $data['user_id'],
+            'user_id' => User::where('username', $data['username'])->first()->id,
             'score' => $data['score'],
             'completed_at' => now(),
         ]);
