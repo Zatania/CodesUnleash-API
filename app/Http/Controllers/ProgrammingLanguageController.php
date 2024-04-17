@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\{
+    Chapter,
+    Lesson
+};
 
 // * REQUEST
 use App\Http\Requests\ProgrammingLanguage\{
@@ -63,5 +67,25 @@ class ProgrammingLanguageController extends Controller
     protected function delete(DeleteProgrammingLanguageRequest $request, $referenceNumber)
     {
         return $this->delete->execute($referenceNumber);
+    }
+
+    public function fetchChaptersLessonsAssessmentsExams()
+    {
+        $chapters = Chapter::select('id', 'chapter_name')->get();
+        $lessons = Lesson::select('id', 'chapter_id', 'lesson_number', 'lesson_title')->get();
+
+        // Organize lessons under their respective chapters
+        $chaptersWithLessons = [];
+        foreach ($chapters as $chapter) {
+            $chaptersWithLessons[] = [
+                'id' => $chapter->id,
+                'chapter_name' => $chapter->chapter_name,
+                'lessons' => $lessons->where('chapter_id', $chapter->id)->values()->all(),
+            ];
+        }
+
+        return response()->json([
+            'chapters' => $chaptersWithLessons,
+        ]);
     }
 }
