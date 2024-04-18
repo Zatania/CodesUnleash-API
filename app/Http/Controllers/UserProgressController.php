@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{UserProgress, Lesson};
+use App\Models\{UserProgress, Lesson, Chapter};
 
 class UserProgressController extends Controller
 {
@@ -48,5 +48,40 @@ class UserProgressController extends Controller
         return response()->json(['next_lesson_id' => $nextLesson->id]);
     }
 
+    public function getNextChapterId(Request $request)
+    {
+        $nextChapter = Chapter::where('id', '>', $request->chapter_id)
+                                    ->orderBy('id', 'asc')
+                                    ->first();
+        if (!$nextChapter) {
+            return response()->json(['message' => 'No next chapter found'], 404);
+        }
+
+        return response()->json(['next_chapter_id' => $nextChapter->id]);
+    }
+
+    public function getLastLessonID(Request $request)
+    {
+        $lastLesson = Lesson::where('chapter_id', $request->chapter_id)
+                                    ->orderBy('id', 'desc')
+                                    ->first();
+        if (!$lastLesson) {
+            return response()->json(['message' => 'No last lesson found'], 404);
+        }
+
+        return response()->json(['last_lesson_id' => $lastLesson->id]);
+    }
+
+    public function getFirstLessonID(Request $request)
+    {
+        $firstLesson = Lesson::where('chapter_id', $request->chapter_id)
+                                    ->orderBy('id', 'asc')
+                                    ->first();
+        if (!$firstLesson) {
+            return response()->json(['message' => 'No first lesson found'], 404);
+        }
+
+        return response()->json(['first_lesson_id' => $firstLesson->id]);
+    }
 
 }

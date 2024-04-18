@@ -45,6 +45,9 @@ Route::group([
 
     $route->post('/progress/create', [UserProgressController::class, 'create']);
     $route->post('/progress/getLessonID', [UserProgressController::class, 'getNextLessonId']);
+    $route->post('/progress/getChapterID', [UserProgressController::class, 'getNextChapterId']);
+    $route->post('/progress/getLastLessonID', [UserProgressController::class, 'getLastLessonID']);
+    $route->post('/progress/getFirstLessonID', [UserProgressController::class, 'getFirstLessonID']);
     $route->get('/fetch/inprogress', [UserProgressController::class, 'index']);
 
 });
