@@ -14,7 +14,8 @@ use App\Http\Controllers\{
     UserBadgeController,
     UserController,
     GettingStartedController,
-    GettingStartedStepsController
+    GettingStartedStepsController,
+    UserProgressController
 };
 
 /*
@@ -41,6 +42,9 @@ Route::group([
     // profile-picture
     $route->post('/upload/{username}', [UserController::class, 'uploadProfilePicture']);
     $route->get('/profile/{username}', [UserController::class, 'getProfilePicture']);
+
+    $route->post('/progress/create', [UserProgressController::class, 'create']);
+    $route->get('/fetch/inprogress', [UserProgressController::class, 'index']);
 });
 
 Route::group([
@@ -68,6 +72,7 @@ Route::group([
     $route->get('/view/{referenceNumber}', [ProgrammingLanguageController::class, 'show']);
     $route->put('/update/{referenceNumber}', [ProgrammingLanguageController::class, 'update']);
     $route->delete('/delete/{referenceNumber}', [ProgrammingLanguageController::class, 'delete']);
+    $route->get('fetch', [ProgrammingLanguageController::class, 'fetchChaptersLessonsAssessmentsExams']);
 });
 
 //chapter

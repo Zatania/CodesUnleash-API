@@ -22,12 +22,12 @@ class UserProgress extends Model
         'assessment_id',
         'completion_status',
         'score'
-    ]
+    ];
 
-    proteced $hidden = [
+    protected $hidden = [
         'created_at',
         'updated_at'
-    ]
+    ];
 
     public function user()
     {

@@ -59,4 +59,14 @@ class User extends Authenticatable
         return $this->hasMany(UserBadge::class);
     }
 
+    public function userProgress()
+    {
+        return $this->hasMany(UserProgress::class);
+    }
+
+    public function examScores()
+    {
+        return $this->hasMany(ExamScore::class);
+    }
+
 }
