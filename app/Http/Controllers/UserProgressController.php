@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\UserProgress;
+use App\Models\{UserProgress, Lesson};
 
 class UserProgressController extends Controller
 {
@@ -36,17 +36,17 @@ class UserProgressController extends Controller
     }
 
     public function getNextLessonId(Request $request)
-    {
-        $nextLesson = UserProgress::where('chapter_id', $request->chapter_id)
-                                    ->where('lesson_id', $request->lesson_id)
-                                    ->orderBy('lesson_id', 'asc')
+    {        
+        $nextLesson = Lesson::where('chapter_id', $request->chapter_id)
+                                    ->where('id', '>', $request->lesson_id)
+                                    ->orderBy('id', 'asc')
                                     ->first();
-
         if (!$nextLesson) {
             return response()->json(['message' => 'No next lesson found'], 404);
         }
 
-        return response()->json(['next_lesson_id' => $nextLesson->lesson_id]);
+        return response()->json(['next_lesson_id' => $nextLesson->id]);
     }
+
 
 }
