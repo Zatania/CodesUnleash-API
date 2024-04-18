@@ -44,6 +44,7 @@ Route::group([
     $route->get('/profile/{username}', [UserController::class, 'getProfilePicture']);
 
     $route->post('/progress/create', [UserProgressController::class, 'create']);
+    $route->get('/progress/view/{id}', [UserProgressController::class, 'view']);
     $route->post('/progress/getLessonID', [UserProgressController::class, 'getNextLessonId']);
     $route->post('/progress/getChapterID', [UserProgressController::class, 'getNextChapterId']);
     $route->post('/progress/getLastLessonID', [UserProgressController::class, 'getLastLessonID']);
