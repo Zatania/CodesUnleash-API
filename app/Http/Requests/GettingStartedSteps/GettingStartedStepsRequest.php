@@ -29,9 +29,9 @@ class GettingStartedStepsRequest extends ResponseRequest
     {
         return [
             'programmingLanguage' => 'required|exists:programming_languages,reference_number',
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'order' => 'required|integer'
+            'name' => 'string',
+            'description' => 'string',
+            'order' => 'integer'
         ];
     }
 }

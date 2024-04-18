@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('getting_started_steps', function (Blueprint $table) {
             $table->id();
             $table->foreignId('getting_started_id')->constrained()->onDelete('cascade');
-            $table->string('name');
-            $table->text('description');
-            $table->string('image');
-            $table->integer('order');
+            $table->string('name')->nullable();
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->integer('order')->nullable();
             $table->timestamps();
         });
     }
