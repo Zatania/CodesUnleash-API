@@ -38,7 +38,7 @@ class UserProgressController extends Controller
     public function getNextLessonId(Request $request)
     {
         $nextLesson = UserProgress::where('chapter_id', $request->chapter_id)
-                                    ->where('lesson_id', '>', $request->lesson_id)
+                                    ->where('lesson_id', $request->lesson_id)
                                     ->orderBy('lesson_id', 'asc')
                                     ->first();
 
