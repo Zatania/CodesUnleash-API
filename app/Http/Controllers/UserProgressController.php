@@ -34,4 +34,19 @@ class UserProgressController extends Controller
         // You can now return this data as JSON or process it further
         return response()->json($inProgressData);
     }
+
+    public function getNextLessonId(Request $request)
+    {
+        $nextLesson = UserProgress::where('chapter_id', $request->chapter_id)
+                                    ->where('lesson_id', '>', $request->lesson_id)
+                                    ->orderBy('lesson_id', 'asc')
+                                    ->first();
+
+        if (!$nextLesson) {
+            return response()->json(['message' => 'No next lesson found'], 404);
+        }
+
+        return response()->json(['next_lesson_id' => $nextLesson->lesson_id]);
+    }
+
 }

@@ -44,7 +44,9 @@ Route::group([
     $route->get('/profile/{username}', [UserController::class, 'getProfilePicture']);
 
     $route->post('/progress/create', [UserProgressController::class, 'create']);
+    $route->post('/progress/getLessonID', [UserProgressController::class, 'getNextLessonId']);
     $route->get('/fetch/inprogress', [UserProgressController::class, 'index']);
+
 });
 
 Route::group([
