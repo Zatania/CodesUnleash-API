@@ -44,7 +44,7 @@ class ProgressController extends Controller
 
             // Calculate average score
             $progress[$chapter_id]['average_score'] = UserProgress::where('chapter_id', $chapter_id)
-                ->where('completion_status', 'completed')
+                ->where('completion_status', null)
                 ->avg('score');
 
             // Get the latest updated_at date
@@ -57,4 +57,21 @@ class ProgressController extends Controller
 
         return response()->json(array_values($progress));
     }
+
+    public function checkIfChapterLessonIsCompleted(Request $request)
+    {
+        $user_progress = UserProgress::where('user_id', $request->user_id)
+                                    ->where('chapter_id', $request->chapter_id)
+                                    ->where('lesson_id', $request->lesson_id)
+                                    ->where('completion_status', 'completed')
+                                    ->orwhere('completion_status', 'inprogress')
+                                    ->first();
+
+        if (!$user_progress) {
+            return response()->json(['message' => 'User progress not found'], 404);
+        }
+
+        return response()->json(['message' => 'true'], 200);
+    }
+
 }

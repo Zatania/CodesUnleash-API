@@ -5,7 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\User\UserRequest;
 use App\Repositories\User\UserRepository;
-use App\Models\User;
+use App\Models\{
+    User,
+    UserProgress,
+    Chapter,
+    ChapterAssessment
+};
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -62,5 +68,59 @@ class UserController extends Controller
             return response()->json(['message' => 'User not found'], 404);
         }
         return $user->profile_picture;
+    }
+
+    public function getChapAss($username)
+    {
+        $user = User::where('username', $username)->first();
+
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $userProgress = $user->userProgress;
+
+        $progress = [];
+
+        foreach ($userProgress as $progressItem) {
+            $chapter_id = $progressItem->chapter_id;
+            $chapter_name = Chapter::find($chapter_id)->chapter_name;
+            $items_count = ChapterAssessment::where('chapter_id', $chapter_id)->count();
+    
+            if (!isset($progress[$chapter_id])) {
+                $progress[$chapter_id] = [
+                    'chapter_name' => $chapter_name,
+                    'total_items' => $items_count,
+                    'latest_score' => null,
+                    'last_attempt' => null,
+                    'status' => null 
+                ];
+            }
+    
+            // Filter to include only rows with completion_status = null and lesson_id = null
+            if ($progressItem->completion_status === null && $progressItem->lesson_id === null) {
+                $score = $progressItem->score;
+                $last_attempt = Carbon::parse($progressItem->updated_at)->format('M d, Y h:iA');
+
+                // Determine if the current score is the latest one for this chapter
+                if ($progress[$chapter_id]['latest_score'] === null || $last_attempt > $progress[$chapter_id]['last_attempt']) {
+                    $progress[$chapter_id]['latest_score'] = $score;
+                    $progress[$chapter_id]['last_attempt'] = $last_attempt;
+
+                    // Calculate status based on passing score
+                    $passingScore = 0.75 * $items_count; // 75% of total items
+                    if ($score >= $passingScore) {
+                        $progress[$chapter_id]['status'] = 'Passed';
+                    } else {
+                        $progress[$chapter_id]['status'] = 'Failed';
+                    }
+                }
+            }
+        }
+
+        // Reindex the array to start from 0
+        $progress = array_values($progress);
+
+        return response()->json($progress);
     }
 }

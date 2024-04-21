@@ -56,6 +56,8 @@ Route::group([
     $route->get('/fetch/completed', [UserProgressController::class, 'completed']);
     $route->get('/fetch/unlocked', [UserProgressController::class, 'unlocked']);
     $route->get('/progress/{username}', [ProgressController::class, 'index']);
+    $route->post('/checkStatus', [ProgressController::class, 'checkIfChapterLessonIsCompleted']);
+    $route->get('/{username}/chapass', [UserController::class, 'getChapAss']);
 
 });
 
