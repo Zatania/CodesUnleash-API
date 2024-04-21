@@ -15,7 +15,8 @@ use App\Http\Controllers\{
     UserController,
     GettingStartedController,
     GettingStartedStepsController,
-    UserProgressController
+    UserProgressController,
+    ProgressController
 };
 
 /*
@@ -50,6 +51,7 @@ Route::group([
     $route->post('/progress/getLastLessonID', [UserProgressController::class, 'getLastLessonID']);
     $route->post('/progress/getFirstLessonID', [UserProgressController::class, 'getFirstLessonID']);
     $route->get('/fetch/inprogress', [UserProgressController::class, 'index']);
+    $route->get('/progress/{username}', [ProgressController::class, 'index']);
 
 });
 
