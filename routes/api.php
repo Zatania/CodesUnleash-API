@@ -44,13 +44,17 @@ Route::group([
     $route->post('/upload/{username}', [UserController::class, 'uploadProfilePicture']);
     $route->get('/profile/{username}', [UserController::class, 'getProfilePicture']);
 
+    $route->post('/progress/update', [UserProgressController::class, 'update']);
     $route->post('/progress/create', [UserProgressController::class, 'create']);
+    $route->get('/progress/unlocked', [UserProgressController::class, 'unlocked']);
     $route->get('/progress/view/{id}', [UserProgressController::class, 'view']);
     $route->post('/progress/getLessonID', [UserProgressController::class, 'getNextLessonId']);
     $route->post('/progress/getChapterID', [UserProgressController::class, 'getNextChapterId']);
     $route->post('/progress/getLastLessonID', [UserProgressController::class, 'getLastLessonID']);
     $route->post('/progress/getFirstLessonID', [UserProgressController::class, 'getFirstLessonID']);
     $route->get('/fetch/inprogress', [UserProgressController::class, 'index']);
+    $route->get('/fetch/completed', [UserProgressController::class, 'completed']);
+    $route->get('/fetch/unlocked', [UserProgressController::class, 'unlocked']);
     $route->get('/progress/{username}', [ProgressController::class, 'index']);
 
 });

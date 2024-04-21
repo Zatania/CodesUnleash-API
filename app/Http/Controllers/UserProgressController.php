@@ -23,6 +23,38 @@ class UserProgressController extends Controller
         return response()->json($userProgress, 201);
     }
 
+    public function update(Request $request)
+    {
+        $userProgress = UserProgress::where('user_id', $request->user_id)
+                                    ->where('chapter_id', $request->chapter_id)
+                                    ->where('lesson_id', $request->lesson_id)
+                                    ->first();
+
+        if (!$userProgress) {
+            return response()->json(['message' => 'User progress not found'], 404);
+        }
+
+        $userProgress->update([
+            'completion_status' => $request->completion_status
+        ]);
+
+        return response()->json($userProgress);
+    }
+    
+    public function unlocked()
+    {
+        $unlockedData = UserProgress::where('completion_status', 'completed')
+                                    ->orWhere('completion_status', 'inprogress')
+                                    ->get();
+
+        if($unlockedData->isEmpty()) {
+            return response()->json(['message' => 'No unlocked data found'], 404);
+        }
+
+        // You can now return this data as JSON or process it further
+        return response()->json($unlockedData);
+    }
+
     public function index()
     {
         $inProgressData = UserProgress::where('completion_status', 'inprogress')->get();
@@ -33,6 +65,18 @@ class UserProgressController extends Controller
 
         // You can now return this data as JSON or process it further
         return response()->json($inProgressData);
+    }
+
+    public function completed()
+    {
+        $completedData = UserProgress::where('completion_status', 'completed')->get();
+
+        if($completedData->isEmpty()) {
+            return response()->json(['message' => 'No completed data found'], 404);
+        }
+
+        // You can now return this data as JSON or process it further
+        return response()->json($completedData);
     }
 
     public function getNextLessonId(Request $request)
