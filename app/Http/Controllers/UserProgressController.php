@@ -30,10 +30,6 @@ class UserProgressController extends Controller
                                     ->where('lesson_id', $request->lesson_id)
                                     ->first();
 
-        if (!$userProgress) {
-            return response()->json(['message' => 'User progress not found'], 404);
-        }
-
         $userProgress->update([
             'completion_status' => $request->completion_status
         ]);
@@ -44,14 +40,11 @@ class UserProgressController extends Controller
     public function unlocked(Request $request)
     {
         $unlockedData = UserProgress::where('user_id', $request->user_id)
-                                    ->where('completion_status', 'completed')
-                                    ->orWhere('completion_status', 'inprogress')
-                                    ->first();
-
-        if($unlockedData->isEmpty()) {
-            return response()->json(['message' => 'No unlocked data found'], 404);
-        }
-
+                                    ->where(function($query) {
+                                        $query->where('completion_status', 'completed')
+                                            ->orWhere('completion_status', 'inprogress');
+                                    })
+                                    ->get();
         // You can now return this data as JSON or process it further
         return response()->json($unlockedData);
     }
