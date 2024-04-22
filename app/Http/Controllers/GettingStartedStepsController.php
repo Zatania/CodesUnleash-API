@@ -5,14 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{GettingStarted, GettingStartedSteps, ProgrammingLanguage};
 use App\Http\Requests\GettingStartedSteps\GettingStartedStepsRequest;
+use Illuminate\Support\Facades\Storage;
 
 class GettingStartedStepsController extends Controller
 {
     public function index()
     {
-        return GettingStartedSteps::all();
+        $gettingStarted = GettingStartedSteps::all();
+    
+        // Modify each item to include the full URL for the image field
+        $formattedData = $gettingStarted->map(function ($item) {
+            $item['image'] = url(Storage::url($item['image']));
+            return $item;
+        });
+    
+        return response()->json($formattedData);
     }
-
     public function view($id)
     {
         return GettingStartedSteps::find($id);
