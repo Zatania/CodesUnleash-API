@@ -46,7 +46,7 @@ class UserProgressController extends Controller
         $unlockedData = UserProgress::where('user_id', $request->user_id)
                                     ->where('completion_status', 'completed')
                                     ->orWhere('completion_status', 'inprogress')
-                                    ->get();
+                                    ->first();
 
         if($unlockedData->isEmpty()) {
             return response()->json(['message' => 'No unlocked data found'], 404);
