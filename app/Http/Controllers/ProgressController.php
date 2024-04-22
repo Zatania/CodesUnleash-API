@@ -43,9 +43,10 @@ class ProgressController extends Controller
             $progress[$chapter_id]['total_items'] = ChapterAssessment::where('chapter_id', $chapter_id)->count();
 
             // Calculate average score
-            $progress[$chapter_id]['average_score'] = UserProgress::where('chapter_id', $chapter_id)
-                ->where('completion_status', null)
-                ->avg('score');
+            $progress[$chapter_id]['average_score'] = UserProgress::where('user_id', $user_id)
+                                                                    ->where('chapter_id', $chapter_id)
+                                                                    ->where('completion_status', null)
+                                                                    ->avg('score');
 
             // Get the latest updated_at date
             $last_attempt = UserProgress::where('chapter_id', $chapter_id)

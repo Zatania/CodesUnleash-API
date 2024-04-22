@@ -69,7 +69,7 @@ class UserProgressController extends Controller
         return response()->json($inProgressData);
     }
 
-    public function completed()
+    public function completed(Request $request)
     {
         $completedData = UserProgress::where('user_id', $request->user_id)
                                         ->where('completion_status', 'completed')->get();
