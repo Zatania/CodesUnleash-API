@@ -16,7 +16,8 @@ use App\Http\Controllers\{
     GettingStartedController,
     GettingStartedStepsController,
     UserProgressController,
-    ProgressController
+    ProgressController,
+    ExamScoreController
 };
 
 /*
@@ -58,6 +59,7 @@ Route::group([
     $route->get('/progress/{username}', [ProgressController::class, 'index']);
     $route->post('/checkStatus', [ProgressController::class, 'checkIfChapterLessonIsCompleted']);
     $route->get('/{username}/chapass', [UserController::class, 'getChapAss']);
+    $route->post('/exam/create', [ExamScoreController::class, 'create']);
 
 });
 
