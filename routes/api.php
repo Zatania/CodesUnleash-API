@@ -53,9 +53,9 @@ Route::group([
     $route->post('/progress/getChapterID', [UserProgressController::class, 'getNextChapterId']);
     $route->post('/progress/getLastLessonID', [UserProgressController::class, 'getLastLessonID']);
     $route->post('/progress/getFirstLessonID', [UserProgressController::class, 'getFirstLessonID']);
-    $route->get('/fetch/inprogress', [UserProgressController::class, 'index']);
-    $route->get('/fetch/completed', [UserProgressController::class, 'completed']);
-    $route->get('/fetch/unlocked', [UserProgressController::class, 'unlocked']);
+    $route->post('/fetch/inprogress', [UserProgressController::class, 'index']);
+    $route->post('/fetch/completed', [UserProgressController::class, 'completed']);
+    $route->post('/fetch/unlocked', [UserProgressController::class, 'unlocked']);
     $route->get('/progress/{username}', [ProgressController::class, 'index']);
     $route->post('/checkStatus', [ProgressController::class, 'checkIfChapterLessonIsCompleted']);
     $route->get('/{username}/chapass', [UserController::class, 'getChapAss']);

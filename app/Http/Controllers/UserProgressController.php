@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{UserProgress, Lesson, Chapter};
+use App\Models\{UserProgress, Lesson, Chapter, User};
 
 class UserProgressController extends Controller
 {
@@ -41,9 +41,10 @@ class UserProgressController extends Controller
         return response()->json($userProgress);
     }
     
-    public function unlocked()
+    public function unlocked(Request $request)
     {
-        $unlockedData = UserProgress::where('completion_status', 'completed')
+        $unlockedData = UserProgress::where('user_id', $request->user_id)
+                                    ->where('completion_status', 'completed')
                                     ->orWhere('completion_status', 'inprogress')
                                     ->get();
 
@@ -55,9 +56,10 @@ class UserProgressController extends Controller
         return response()->json($unlockedData);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $inProgressData = UserProgress::where('completion_status', 'inprogress')->get();
+        $inProgressData = UserProgress::where('user_id', $request->user_id)
+                                        ->where('completion_status', 'inprogress')->get();
 
         if($inProgressData->isEmpty()) {
             return response()->json(['message' => 'No in progress data found'], 404);
@@ -69,7 +71,8 @@ class UserProgressController extends Controller
 
     public function completed()
     {
-        $completedData = UserProgress::where('completion_status', 'completed')->get();
+        $completedData = UserProgress::where('user_id', $request->user_id)
+                                        ->where('completion_status', 'completed')->get();
 
         if($completedData->isEmpty()) {
             return response()->json(['message' => 'No completed data found'], 404);
